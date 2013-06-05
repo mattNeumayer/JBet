@@ -112,4 +112,12 @@ public class Match {
 	return true;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+	return this.team1 + " " + this.scoreTeam1 + ":" + this.scoreTeam2 + " " + this.team2;
+    }
+
 }

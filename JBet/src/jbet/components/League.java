@@ -7,26 +7,15 @@ package jbet.components;
  * 05.06.2013
  *
  */
-public class Team {
+public class League {
     private String name;
-
-    public Team(String name){
-	this.name = name;
-    }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return this.name;
-    }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-	return this.name;		
+	return this.name;
     }
 
     /* (non-Javadoc)
@@ -52,7 +41,7 @@ public class Team {
 	    return false;
 	if (getClass() != obj.getClass())
 	    return false;
-	Team other = (Team) obj;
+	League other = (League) obj;
 	if (this.name == null) {
 	    if (other.name != null)
 		return false;
@@ -60,4 +49,19 @@ public class Team {
 	    return false;
 	return true;
     }
+
+    /**
+     * @param name
+     */
+    public League(String name) {
+	super();
+	this.name = name;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return this.name;
+    }    
 }
