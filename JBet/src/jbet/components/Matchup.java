@@ -7,19 +7,19 @@ package jbet.components;
  * 05.06.2013
  *
  */
-public class Match {
+public class Matchup {
     
     private Team team1;
     private Team team2;
     private int scoreTeam1;
     private int scoreTeam2;
 
-    public Match(Team team1, Team team2){
+    public Matchup(Team team1, Team team2){
 	this.team1 = team1;
 	this.team2 = team2;
     }
     
-    public Match(Team team1, Team team2, int scoreTeam1, int scoreTeam2){
+    public Matchup(Team team1, Team team2, int scoreTeam1, int scoreTeam2){
 	this(team1, team2);
 	this.scoreTeam1 = scoreTeam1;
 	this.scoreTeam2 = scoreTeam2;
@@ -94,7 +94,7 @@ public class Match {
 	    return false;
 	if (getClass() != obj.getClass())
 	    return false;
-	Match other = (Match) obj;
+	Matchup other = (Matchup) obj;
 	if (this.scoreTeam1 != other.scoreTeam1)
 	    return false;
 	if (this.scoreTeam2 != other.scoreTeam2)
