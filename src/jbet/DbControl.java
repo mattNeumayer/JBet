@@ -21,28 +21,52 @@ public class DbControl {
 	connect();
     }
 
+    /**
+     *
+     * @return
+     */
     public static DbControl getInstance() {
 	return instance;
     }
 
+    /**
+     *
+     * @param t
+     * @return
+     */
     public int add(Team t) {
 	String msg = String.format("INSERT INTO team VALUES ('%s')",
 		t.getName());
 	return executeUpdate(msg);
     }
 
+    /**
+     *
+     * @param l
+     * @return
+     */
     public int add(League l) {
 	String msg = String.format("INSERT INTO league VALUES ('%s')",
 		l.getName());
 	return executeUpdate(msg);
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     public int add(Season s) {
 	String msg = String.format("INSERT INTO season Value(null,%d,'%s')",
 		s.getStartYear(), s.getLeague().getName());
 	return executeUpdate(msg);
     }
     
+    /**
+     *
+     * @param md
+     * @return
+     */
     public int add(Matchday md) {
 	int seasonID = getSeasonID(md.getSeason());
 	if( seasonID == -1){
@@ -53,6 +77,11 @@ public class DbControl {
 	return executeUpdate(msg);
     }
     
+    /**
+     *
+     * @param m
+     * @return
+     */
     public int add(Matchup m) {
 	int matchdayID = getMatchdayID(m.getMatchday());
 	if( matchdayID == -1){
