@@ -1,3 +1,5 @@
+package jbet;
+
 
 import java.awt.*;
 

@@ -1,5 +1,6 @@
+package jbet;
 
-import javax.swing.ImageIcon;
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -10,8 +11,6 @@ import javax.swing.ImageIcon;
  *
  * @author schmiedmayerp29
  */
-
-import javax.swing.*;
 
 public class RegistrationView extends javax.swing.JPanel {
 
