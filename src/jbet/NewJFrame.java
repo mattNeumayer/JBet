@@ -1,26 +1,48 @@
 package jbet;
 
-
 import java.awt.*;
 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author schmiedmayerp29
  */
-
 public class NewJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    
+    Controller myOwner;
+    
+    public NewJFrame(Controller owner) {
         initComponents();
+        myOwner = owner;
+        this.setLayout(new GridLayout(1, 1));
+        RegistrationView panel = new RegistrationView(this);
+        this.add(panel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        panel.setVisible(true);
+        this.setSize(panel.getPreferredSize());
+        this.setVisible(true);
     }
+
+    
+    // Registration View
+    
+    public void userDidEnterLogin(String name, String passwort){
+        System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
+        boolean valid = myOwner.requestUserLoginValid(name,passwort);
+        if (valid) {
+            System.out.println("Login True");
+        }else{
+            System.out.println("Login False - Reenter Username of Password");
+        }
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,14 +99,15 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                NewJFrame frame = new NewJFrame();
-                frame.setLayout(new GridLayout(1,1));
-                RegistrationView panel = new RegistrationView();
-                frame.add(panel,BorderLayout.CENTER);
-                frame.setLocationRelativeTo(null); 
+                // Sollte dann auskommentiert werden
+                /*NewJFrame frame = new NewJFrame();
+                frame.setLayout(new GridLayout(1, 1));
+                RegistrationView panel = new RegistrationView(frame);
+                frame.add(panel, BorderLayout.CENTER);
+                frame.setLocationRelativeTo(null);
                 panel.setVisible(true);
                 frame.setSize(panel.getPreferredSize());
-                frame.setVisible(true);
+                frame.setVisible(true);*/
             }
         });
     }

@@ -14,11 +14,14 @@ package jbet;
 
 public class RegistrationView extends javax.swing.JPanel {
 
+    private NewJFrame mySuperFrame;
+    
     /**
      * Creates new form RegistrationView
-     */
-    public RegistrationView() {
+     */   
+    public RegistrationView(NewJFrame superFrame) {
         initComponents();
+        mySuperFrame = superFrame;
         /*ImageIcon icon = new ImageIcon("image.jpg"); 
         JLabel label = new JLabel(); 
         label.setIcon(icon); 
@@ -41,6 +44,11 @@ public class RegistrationView extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(270, 110));
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setText("Benutzername");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,13 +91,26 @@ public class RegistrationView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        usenWantsToLogIn();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+        usenWantsToLogIn();
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        usenWantsToLogIn();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+   
+    public void usenWantsToLogIn(){
+        String passwort;
+        passwort = new String(jPasswordField1.getPassword());
+        String name = jTextField1.getText();
+        mySuperFrame.userDidEnterLogin(name,passwort);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField jPasswordField1;
