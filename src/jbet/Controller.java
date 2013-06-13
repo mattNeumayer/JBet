@@ -24,7 +24,7 @@ public class Controller {
      * 
      * @param name Benutzername
      * @param passwort Benutzerpasswort
-     * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
+     * @return true wenn    es die Kombination gibt/ false wenn es sie nicht gibt
      */    
     public boolean requestUserLoginValid(String name,String passwort){
         if()
