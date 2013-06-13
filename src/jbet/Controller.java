@@ -12,10 +12,25 @@ import jbet.components.*;
  */
 public class Controller {
     
+    private static DbControl model;
+    private static NewFrame frame;
+    
     public static void main(String[] args) {
-	DbControl Db = DbControl.getInstance();
-	System.out.println(Db.add(new Matchup(new Matchday(new Season(
-		new League("Bundesliga"), 2013), 1), new Team(
-		"FC Bayern Muenchen"), new Team("Borussia Dortmund"))));
+	model = DbControl.getInstance();
+        frame = new NewFrame(this);
     }
+    
+    /**
+     * 
+     * @param name Benutzername
+     * @param passwort Benutzerpasswort
+     * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
+     */    
+    public boolean requestUserLoginValid(String name,String passwort){
+        if()
+            return true;
+        else
+            return false;
+    }
+
 }
