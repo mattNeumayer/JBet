@@ -13,13 +13,12 @@ import jbet.components.*;
 public class Controller {
     
     private static DbControl model;
-    private static NewFrame frame;
+    private static NewJFrame frame;
     
-    public static void main(String[] args) {
-	model = DbControl.getInstance();
-        frame = new NewFrame(this);
+    public Controller(){
+	//model = DbControl.getInstance();
+        frame = new NewJFrame(this);
     }
-    
     /**
      * 
      * @param name Benutzername
@@ -27,9 +26,8 @@ public class Controller {
      * @return true wenn    es die Kombination gibt/ false wenn es sie nicht gibt
      */    
     public boolean requestUserLoginValid(String name,String passwort){
-        if()
-            return true;
-        else
+        //if return true;
+        //else
             return false;
     }
 
