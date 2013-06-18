@@ -37,8 +37,28 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
+            if(myOwner.userIsAdmin(name)){
+                // Present the Admin UI
+            }else{
+                // Present the User UI
+            }
         }else{
             System.out.println("Login False - Reenter Username of Password");
+        }
+    }
+    
+    public void creatNewUser(boolean admin, String name, String passwort){
+        System.out.println("Neuer Benutzer: (Admin: " + admin + " )Benutzername: " + name + "  Passwort: " + passwort);
+        boolean valid = myOwner.addUser(name,passwort,admin);
+        if (valid) {
+            System.out.println("Login True");
+            if(admin){
+                // Present the Admin UI
+            }else{
+                // Present the User UI
+            }
+        }else{
+            System.out.println("ERROR: Could not create User");
         }
     }
 

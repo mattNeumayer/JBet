@@ -92,6 +92,7 @@
     </Component>
     <Component class="java.awt.Label" name="label1">
       <Properties>
+        <Property name="alignment" type="int" value="1"/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
         <Property name="text" type="java.lang.String" value="Welcome to JBet"/>
       </Properties>
