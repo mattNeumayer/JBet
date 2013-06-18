@@ -16,17 +16,28 @@ public class Controller {
     private static NewJFrame frame;
     
     public Controller(){
-        //model = DbControl.getInstance();
+        model = DbControl.getInstance();
         frame = new NewJFrame(this);
     }
+    
+    public boolean isAdmin(String name){
+        return model.isAdmin(name);
+    }
+    
+    
+    public void addUser(String name, String passwort, boolean admin){
+        model.addUser(name,passwort,admin);
+    }
+    
+    
     /**
      * 
      * @param name Benutzername
      * @param passwort Benutzerpasswort
      * @return true wenn    es die Kombination gibt/ false wenn es sie nicht gibt
      */    
-    //public boolean requestUserLoginValid(String name,String passwort){
-        //return model.checkLogin(name,passwort);
-    //}
+    public boolean requestUserLoginValid(String name,String passwort){
+        return model.checkLogin(name,passwort);
+    }
 
 }
