@@ -16,7 +16,7 @@ public class Controller {
     private static NewJFrame frame;
     
     public Controller(){
-	//model = DbControl.getInstance();
+        //model = DbControl.getInstance();
         frame = new NewJFrame(this);
     }
     /**
@@ -25,10 +25,8 @@ public class Controller {
      * @param passwort Benutzerpasswort
      * @return true wenn    es die Kombination gibt/ false wenn es sie nicht gibt
      */    
-    public boolean requestUserLoginValid(String name,String passwort){
-        //if return true;
-        //else
-            return false;
-    }
+    //public boolean requestUserLoginValid(String name,String passwort){
+        //return model.checkLogin(name,passwort);
+    //}
 
 }
