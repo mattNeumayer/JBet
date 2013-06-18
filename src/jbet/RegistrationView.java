@@ -1,5 +1,7 @@
 package jbet;
 
+import java.awt.Dimension;
+
 
 
 /*
@@ -22,6 +24,7 @@ public class RegistrationView extends javax.swing.JPanel {
     public RegistrationView(NewJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
+        mySuperFrame.setSize(this.getPreferredSize());
         /*ImageIcon icon = new ImageIcon("image.jpg"); 
         JLabel label = new JLabel(); 
         label.setIcon(icon); 
@@ -43,7 +46,8 @@ public class RegistrationView extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         label1 = new java.awt.Label();
 
-        setPreferredSize(new java.awt.Dimension(270, 110));
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(400, 175));
 
         jButton1.setText("Neuer Benutzer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +93,7 @@ public class RegistrationView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
