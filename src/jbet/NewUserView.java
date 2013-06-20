@@ -13,8 +13,16 @@ public class NewUserView extends javax.swing.JPanel {
     /**
      * Creates new form NewUserView
      */
-    public NewUserView() {
+    
+    private NewJFrame mySuperFrame;
+    
+    /**
+     * Creates new form RegistrationView
+     */
+    public NewUserView(NewJFrame superFrame) {
         initComponents();
+        mySuperFrame = superFrame;
+        mySuperFrame.setSize(this.getPreferredSize());
     }
 
     /**
@@ -26,9 +34,45 @@ public class NewUserView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelWelcome = new java.awt.Label();
+        username = new javax.swing.JTextField();
+        password = new javax.swing.JPasswordField();
+        passwordRepeat = new javax.swing.JPasswordField();
+        labelUsername = new java.awt.Label();
+        labelPassword = new java.awt.Label();
+        labelRepeatPassword = new java.awt.Label();
+        creatNewUser = new java.awt.Button();
+        acceptAGBCheckboox = new java.awt.Checkbox();
+        passwordNotTheSame = new java.awt.Label();
+        didNotAcceptAGB = new java.awt.Label();
 
-        jLabel1.setText("jLabel1");
+        labelWelcome.setAlignment(java.awt.Label.CENTER);
+        labelWelcome.setText("Welcome, here you can creat a new User");
+
+        username.setText("jTextField1");
+
+        password.setText("jPasswordField1");
+
+        passwordRepeat.setText("jPasswordField2");
+
+        labelUsername.setText("Username");
+
+        labelPassword.setText("Password");
+
+        labelRepeatPassword.setText("Repeat Password");
+
+        creatNewUser.setLabel("Creat new User");
+        creatNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creatNewUserActionPerformed(evt);
+            }
+        });
+
+        acceptAGBCheckboox.setLabel("Accept AGB");
+
+        passwordNotTheSame.setForeground(new java.awt.Color(255, 0, 0));
+
+        didNotAcceptAGB.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -36,18 +80,85 @@ public class NewUserView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(labelWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(username)
+                    .addComponent(password)
+                    .addComponent(passwordRepeat)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(acceptAGBCheckboox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(didNotAcceptAGB, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(creatNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelRepeatPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordNotTheSame, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addComponent(labelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelRepeatPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordNotTheSame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(creatNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(acceptAGBCheckboox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(didNotAcceptAGB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void creatNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creatNewUserActionPerformed
+        passwordNotTheSame.setText("");
+        didNotAcceptAGB.setText("");
+        
+        String passwordString = new String(password.getPassword());
+        if(passwordString.equals(new String(passwordRepeat.getPassword()))){
+            if(acceptAGBCheckboox.getState() == true){
+                mySuperFrame.creatNewUser(false, passwordString, username.getText());
+            }else{
+                didNotAcceptAGB.setText("Accept the AGB");
+            }
+        }else{
+            passwordNotTheSame.setText("Password is not the same");
+        }
+    }//GEN-LAST:event_creatNewUserActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private java.awt.Checkbox acceptAGBCheckboox;
+    private java.awt.Button creatNewUser;
+    private java.awt.Label didNotAcceptAGB;
+    private java.awt.Label labelPassword;
+    private java.awt.Label labelRepeatPassword;
+    private java.awt.Label labelUsername;
+    private java.awt.Label labelWelcome;
+    private javax.swing.JPasswordField password;
+    private java.awt.Label passwordNotTheSame;
+    private javax.swing.JPasswordField passwordRepeat;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

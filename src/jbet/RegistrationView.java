@@ -77,6 +77,7 @@ public class RegistrationView extends javax.swing.JPanel {
             }
         });
 
+        label1.setAlignment(java.awt.Label.CENTER);
         label1.setName(""); // NOI18N
         label1.setText("Welcome to JBet");
 
