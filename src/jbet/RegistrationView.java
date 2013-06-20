@@ -40,40 +40,40 @@ public class RegistrationView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
+        newUserButton = new javax.swing.JButton();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        logInButton = new javax.swing.JButton();
         label1 = new java.awt.Label();
 
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(400, 175));
 
-        jButton1.setText("Neuer Benutzer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        newUserButton.setText("Neuer Benutzer");
+        newUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                newUserButtonActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("Benutzername");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setText("Benutzername");
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setText("Passwort");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.setText("Passwort");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Anmelden");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        logInButton.setText("Anmelden");
+        logInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                logInButtonActionPerformed(evt);
             }
         });
 
@@ -89,12 +89,12 @@ public class RegistrationView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jTextField1)
+                    .addComponent(passwordField)
+                    .addComponent(usernameField)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
+                        .addComponent(logInButton, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,47 +103,47 @@ public class RegistrationView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(newUserButton)
+                    .addComponent(logInButton))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        usenWantsToLogIn();
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
+        userWantsToLogIn();
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        usenWantsToLogIn();
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        userWantsToLogIn();
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        usenWantsToLogIn();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserButtonActionPerformed
+        mySuperFrame.showAddUserView();
+    }//GEN-LAST:event_newUserButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
+        userWantsToLogIn();
+    }//GEN-LAST:event_logInButtonActionPerformed
 
    
-    public void usenWantsToLogIn(){
+    public void userWantsToLogIn(){
         String passwort;
-        passwort = new String(jPasswordField1.getPassword());
-        String name = jTextField1.getText();
+        passwort = new String(passwordField.getPassword());
+        String name = usernameField.getText();
         mySuperFrame.userDidEnterLogin(name,passwort);
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
+    private javax.swing.JButton logInButton;
+    private javax.swing.JButton newUserButton;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

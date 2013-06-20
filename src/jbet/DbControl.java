@@ -18,7 +18,7 @@ public class DbControl {
     private Statement st;
 
     private DbControl() {
-        connect();
+        //connect();
     }
 
     /**

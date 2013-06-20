@@ -1,6 +1,7 @@
 package jbet;
 
 import java.awt.*;
+import javax.swing.JPanel;
 
 /*
  * To change this template, choose Tools | Templates
@@ -17,15 +18,16 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     
     Controller myOwner;
+    JPanel myPanel;
     
     public NewJFrame(Controller owner) {
         initComponents();
         myOwner = owner;
         this.setLayout(new GridLayout(1, 1));
-        RegistrationView panel = new RegistrationView(this);
-        this.add(panel, BorderLayout.CENTER);
+        myPanel = new RegistrationView(this);
+        this.add(myPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
-        panel.setVisible(true);
+        myPanel.setVisible(true);
         this.setVisible(true);
     }
 
@@ -45,6 +47,14 @@ public class NewJFrame extends javax.swing.JFrame {
         }else{
             System.out.println("Login False - Reenter Username of Password");
         }
+    }
+    
+    public void showAddUserView(){
+        this.remove(myPanel);
+        myPanel = new NewUserView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
     }
     
     public void creatNewUser(boolean admin, String name, String passwort){

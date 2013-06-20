@@ -4,6 +4,8 @@
  */
 package jbet;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author schmiedmayerp29
@@ -22,7 +24,7 @@ public class NewUserView extends javax.swing.JPanel {
     public NewUserView(NewJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
-        mySuperFrame.setSize(this.getPreferredSize());
+        mySuperFrame.setSize(getPreferredSize());
     }
 
     /**
@@ -45,6 +47,8 @@ public class NewUserView extends javax.swing.JPanel {
         acceptAGBCheckboox = new java.awt.Checkbox();
         passwordNotTheSame = new java.awt.Label();
         didNotAcceptAGB = new java.awt.Label();
+
+        setPreferredSize(new java.awt.Dimension(500, 300));
 
         labelWelcome.setAlignment(java.awt.Label.CENTER);
         labelWelcome.setText("Welcome, here you can creat a new User");
@@ -91,7 +95,7 @@ public class NewUserView extends javax.swing.JPanel {
                         .addComponent(acceptAGBCheckboox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addComponent(didNotAcceptAGB, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addComponent(creatNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelRepeatPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
