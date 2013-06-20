@@ -174,7 +174,7 @@ public class DbControl {
         } catch (SQLException e) {
             return null;
         }*/
-        return -1;
+        return null;
     }
 
     private int executeUpdate(String sql) {
