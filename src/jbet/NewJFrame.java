@@ -1,6 +1,7 @@
 package jbet;
 
 import java.awt.*;
+import javax.swing.JPanel;
 
 /*
  * To change this template, choose Tools | Templates
@@ -17,15 +18,16 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     
     Controller myOwner;
+    JPanel myPanel;
     
     public NewJFrame(Controller owner) {
         initComponents();
         myOwner = owner;
         this.setLayout(new GridLayout(1, 1));
-        RegistrationView panel = new RegistrationView(this);
-        this.add(panel, BorderLayout.CENTER);
+        myPanel = new RegistrationView(this);
+        this.add(myPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
-        panel.setVisible(true);
+        myPanel.setVisible(true);
         this.setVisible(true);
     }
 
@@ -37,14 +39,18 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
-            if(myOwner.isAdmin(name)){
-                // Present the Admin UI
-            }else{
-                // Present the User UI
-            }
+            presentJBetUI(myOwner.isAdmin(name));
         }else{
             System.out.println("Login False - Reenter Username of Password");
         }
+    }
+    
+    public void showAddUserView(){
+        this.remove(myPanel);
+        myPanel = new NewUserView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
     }
     
     public void creatNewUser(boolean admin, String name, String passwort){
@@ -52,14 +58,22 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.addUser(name,passwort,admin);
         if (valid) {
             System.out.println("Login True");
-            if(admin){
-                // Present the Admin UI
-            }else{
-                // Present the User UI
-            }
+            presentJBetUI(admin);
         }else{
             System.out.println("ERROR: Could not create User");
         }
+    }
+    
+    public void presentJBetUI(boolean isAdmin){
+        this.remove(myPanel);
+        if(isAdmin){
+            myPanel = new UserView(this);
+        }else{
+            myPanel = new AdminView(this);
+        }
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
