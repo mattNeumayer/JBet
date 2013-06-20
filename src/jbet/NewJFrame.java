@@ -37,7 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
-            if(myOwner.userIsAdmin(name)){
+            if(myOwner.isAdmin(name)){
                 // Present the Admin UI
             }else{
                 // Present the User UI

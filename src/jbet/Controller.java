@@ -25,8 +25,9 @@ public class Controller {
     }
     
     
-    public void addUser(String name, String passwort, boolean admin){
+    public boolean addUser(String name, String passwort, boolean admin){
         model.addUser(name,passwort,admin);
+        return true;
     }
     
     
