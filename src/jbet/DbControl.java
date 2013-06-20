@@ -169,19 +169,21 @@ public class DbControl {
     }
 
     private ResultSet executeQuery(String sql) {
-        try {
+        /*try {
             return st.executeQuery(sql);
         } catch (SQLException e) {
             return null;
-        }
+        }*/
+        return -1;
     }
 
     private int executeUpdate(String sql) {
-        try {
+        /*try {
             return st.executeUpdate(sql);
         } catch (SQLException e) {
             return -1;
-        }
+        }*/
+        return -1;
     }
 
     private void connect() {
