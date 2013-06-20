@@ -19,12 +19,22 @@ public class Controller {
         model = DbControl.getInstance();
         frame = new NewJFrame(this);
     }
-    
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public boolean isAdmin(String name){
         return model.isAdmin(name);
     }
     
-    
+    /**
+     * 
+     * @param name
+     * @param passwort
+     * @param admin
+     * @return 
+     */
     public boolean addUser(String name, String passwort, boolean admin){
         model.addUser(name,passwort,admin);
         return true;
