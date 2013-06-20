@@ -16,9 +16,20 @@ public class Controller {
     private static NewJFrame frame;
     
     public Controller(){
-	//model = DbControl.getInstance();
+        model = DbControl.getInstance();
         frame = new NewJFrame(this);
     }
+    
+    public boolean isAdmin(String name){
+        return model.isAdmin(name);
+    }
+    
+    
+    public void addUser(String name, String passwort, boolean admin){
+        model.addUser(name,passwort,admin);
+    }
+    
+    
     /**
      * 
      * @param name Benutzername
@@ -26,9 +37,7 @@ public class Controller {
      * @return true wenn    es die Kombination gibt/ false wenn es sie nicht gibt
      */    
     public boolean requestUserLoginValid(String name,String passwort){
-        //if return true;
-        //else
-            return false;
+        return model.checkLogin(name,passwort);
     }
 
 }
