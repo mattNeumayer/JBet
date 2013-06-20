@@ -39,11 +39,7 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
-            if(myOwner.isAdmin(name)){
-                // Present the Admin UI
-            }else{
-                // Present the User UI
-            }
+            presentJBetUI(myOwner.isAdmin(name));
         }else{
             System.out.println("Login False - Reenter Username of Password");
         }
@@ -62,14 +58,22 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.addUser(name,passwort,admin);
         if (valid) {
             System.out.println("Login True");
-            if(admin){
-                // Present the Admin UI
-            }else{
-                // Present the User UI
-            }
+            presentJBetUI(admin);
         }else{
             System.out.println("ERROR: Could not create User");
         }
+    }
+    
+    public void presentJBetUI(boolean isAdmin){
+        this.remove(myPanel);
+        if(isAdmin){
+            myPanel = new UserView(this);
+        }else{
+            myPanel = new AdminView(this);
+        }
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
