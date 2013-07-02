@@ -133,7 +133,18 @@ public class DbControl {
             return false;
         }
     }
-
+    
+    public int addBet(String username,Bet bet){
+        int matchupID = getMatchupID(bet.getMatchup());
+        if (matchupID == -1) {
+            return -1;
+        }
+        String msg;
+        msg = String.format("INSERT INTO bet Value(null,%d,%d,%d)",
+                    matchupID, bet.getScore1(), bet.getScore2());
+        return executeUpdate(msg);
+    }
+    
     /**
      * @return
      */
@@ -159,6 +170,23 @@ public class DbControl {
         }
         String msg = String.format("SELECT MD_ID FROM matchday WHERE number = %d AND season = '%d'",
                 md.getNumber(), seasonID);
+        try {
+            ResultSet rs = executeQuery(msg);
+            rs.first();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return -1;
+        }
+    }
+    
+    private int getMatchupID(Matchup mu) {
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        int MatchdayID = getMatchdayID(mu.getMatchday());
+        if (MatchdayID == -1) {
+            return -1;
+        }
+        String msg = String.format("SELECT MU_ID FROM matchup WHERE number = %d AND matchday = '%d'",
+                mu.getTeam1(), MatchdayID);
         try {
             ResultSet rs = executeQuery(msg);
             rs.first();
