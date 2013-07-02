@@ -2,6 +2,7 @@ package jbet;
 
 import java.awt.*;
 import javax.swing.JPanel;
+import jbet.Views.*;
 
 /*
  * To change this template, choose Tools | Templates
@@ -36,13 +37,17 @@ public class NewJFrame extends javax.swing.JFrame {
     
     public void userDidEnterLogin(String name, String passwort){
         System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
-        boolean valid = myOwner.requestUserLoginValid(name,passwort);
+        // Ausgeklammert weil keine Datenbank
+        /*boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
             presentJBetUI(myOwner.isAdmin(name));
         }else{
             System.out.println("Login False - Reenter Username of Password");
-        }
+        }*/
+        
+        boolean flag = false; // Adminview anzeigen true, Userview false
+        presentJBetUI(flag);
     }
     
     public void showAddUserView(){
@@ -69,13 +74,24 @@ public class NewJFrame extends javax.swing.JFrame {
         if(isAdmin){
             myPanel = new UserView(this);
         }else{
-            myPanel = new AdminView(this);
+            myPanel = new AdminStartView(this);
         }
         this.add(myPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
         myPanel.setVisible(true);
     }
-
+    
+    public void presentEnterMatchResults(boolean admin){
+        this.remove(myPanel);
+        if(admin){
+            myPanel = new EnterMatchResultsAdminView(this);
+        }else{
+            //myPanel = new EnterMatchResultsAdminView(this);
+        }
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
