@@ -5,6 +5,7 @@
 package jbet;
 
 import jbet.components.*;
+import java.util.HashMap;
 
 /**
  *
@@ -51,4 +52,11 @@ public class Controller {
         return model.checkLogin(name,passwort);
     }
 
+    //public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
+        //frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
+    //}
+    
+    public HashMap<String, Boolean> getAllUser(){
+        return DbControl.getAllUser();
+    }
 }
