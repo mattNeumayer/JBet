@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author pinzeka19
+ * @author pinzeka19/binsmaierf03
  */
 public class Controller {
     
@@ -46,17 +46,17 @@ public class Controller {
      * 
      * @param name Benutzername
      * @param passwort Benutzerpasswort
-     * @return true wenn    es die Kombination gibt/ false wenn es sie nicht gibt
+     * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
      */    
     public boolean requestUserLoginValid(String name,String passwort){
         return model.checkLogin(name,passwort);
     }
 
-    //public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
-        //frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
-    //}
+  //  public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
+  //      frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
+  //  }
     
-    public HashMap<String, Boolean> getAllUser(){
-        return DbControl.getAllUser();
-    }
+  //  public HashMap<String, Boolean> getAllUser(){
+  //      return DbControl.getAllUser();
+  //  }
 }
