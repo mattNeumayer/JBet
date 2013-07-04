@@ -24,14 +24,14 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButton2" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="enterBetsButton" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="showLeaderboardButton" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButton3" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="editProfileButton" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton4" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="enterLogoutButton" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -50,13 +50,13 @@
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="enterBetsButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="showLeaderboardButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton3" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="editProfileButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="enterLogoutButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -75,25 +75,37 @@
         <Property name="text" type="java.lang.String" value="Welcome &quot;Username&quot;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="showLeaderboardButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show Leaderboard"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showLeaderboardButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="enterBetsButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter Bets"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterBetsButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="editProfileButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Profile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editProfileButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="enterLogoutButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterLogoutButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

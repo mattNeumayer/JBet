@@ -12,11 +12,11 @@ import jbet.NewJFrame;
  */
 public class AdminStartView extends javax.swing.JPanel {
 
+    private NewJFrame mySuperFrame;
+    
     /**
      * Creates new form AdminStartView
      */
-    
-    private NewJFrame mySuperFrame;
     
     public AdminStartView (NewJFrame superFrame) {
         initComponents();
@@ -38,7 +38,7 @@ public class AdminStartView extends javax.swing.JPanel {
         userList = new javax.swing.JList();
         enterLeague = new javax.swing.JButton();
         enterResults = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        isAdminCheckBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -66,7 +66,7 @@ public class AdminStartView extends javax.swing.JPanel {
             }
         });
 
-        jCheckBox1.setText("Is Admin");
+        isAdminCheckBox.setText("Is Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,7 +80,7 @@ public class AdminStartView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(isAdminCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(enterResults)
@@ -104,7 +104,7 @@ public class AdminStartView extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(isAdminCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -120,7 +120,7 @@ public class AdminStartView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton enterLeague;
     private javax.swing.JButton enterResults;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox isAdminCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

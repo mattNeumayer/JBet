@@ -4,17 +4,23 @@
  */
 package jbet.Views;
 
+import jbet.NewJFrame;
+
 /**
  *
  * @author schmiedmayerp29
  */
 public class EnterLeagueDetailAdminView extends javax.swing.JPanel {
 
+    private NewJFrame mySuperFrame;
+    
     /**
      * Creates new form EnterLeagueDetailAdminView
      */
-    public EnterLeagueDetailAdminView() {
+    public EnterLeagueDetailAdminView(NewJFrame superFrame) {
         initComponents();
+        mySuperFrame = superFrame;
+        mySuperFrame.setSize(getPreferredSize());
     }
 
     /**
@@ -48,7 +54,7 @@ public class EnterLeagueDetailAdminView extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Enter Results");
+        jLabel1.setText("Enter / Mod League");
 
         jLabel2.setText("Name");
 

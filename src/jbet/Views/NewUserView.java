@@ -11,16 +11,13 @@ import jbet.NewJFrame;
  * @author schmiedmayerp29
  */
 public class NewUserView extends javax.swing.JPanel {
-
-    /**
-     * Creates new form NewUserView
-     */
     
     private NewJFrame mySuperFrame;
     
     /**
-     * Creates new form RegistrationView
+     * Creates new form NewUserView
      */
+    
     public NewUserView(NewJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
