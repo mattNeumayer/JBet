@@ -4,17 +4,23 @@
  */
 package jbet.Views;
 
+import jbet.NewJFrame;
+
 /**
  *
  * @author schmiedmayerp29
  */
 public class LeaderboardView extends javax.swing.JPanel {
 
+    private NewJFrame mySuperFrame;
+    
     /**
      * Creates new form LeaderboardView
      */
-    public LeaderboardView() {
+    public LeaderboardView(NewJFrame superFrame) {
         initComponents();
+        mySuperFrame = superFrame;
+        mySuperFrame.setSize(getPreferredSize());
     }
 
     /**

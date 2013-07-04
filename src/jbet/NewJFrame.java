@@ -38,16 +38,16 @@ public class NewJFrame extends javax.swing.JFrame {
     public void userDidEnterLogin(String name, String passwort){
         System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
         // Ausgeklammert weil keine Datenbank
-        /*boolean valid = myOwner.requestUserLoginValid(name,passwort);
+        boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
             presentJBetUI(myOwner.isAdmin(name));
         }else{
             System.out.println("Login False - Reenter Username of Password");
-        }*/
+        }
         
-        boolean flag = false; // Adminview anzeigen true, Userview false
-        presentJBetUI(flag);
+        //boolean flag = false; // Adminview anzeigen true, Userview false
+        //presentJBetUI(flag);
     }
     
     public void showAddUserView(){
@@ -58,12 +58,12 @@ public class NewJFrame extends javax.swing.JFrame {
         myPanel.setVisible(true);
     }
     
-    public void creatNewUser(boolean admin, String name, String passwort){
-        System.out.println("Neuer Benutzer: (Admin: " + admin + " )Benutzername: " + name + "  Passwort: " + passwort);
-        boolean valid = myOwner.addUser(name,passwort,admin);
+    public void creatNewUser(boolean isAdmin, String name, String passwort){
+        System.out.println("Neuer Benutzer: (Admin: " + isAdmin + " )Benutzername: " + name + "  Passwort: " + passwort);
+        boolean valid = myOwner.addUser(name,passwort,isAdmin);
         if (valid) {
             System.out.println("Login True");
-            presentJBetUI(admin);
+            presentJBetUI(isAdmin);
         }else{
             System.out.println("ERROR: Could not create User");
         }
@@ -72,9 +72,9 @@ public class NewJFrame extends javax.swing.JFrame {
     public void presentJBetUI(boolean isAdmin){
         this.remove(myPanel);
         if(isAdmin){
-            myPanel = new UserView(this);
-        }else{
             myPanel = new AdminStartView(this);
+        }else{
+            myPanel = new UserView(this);
         }
         this.add(myPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
