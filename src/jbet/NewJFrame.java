@@ -18,8 +18,9 @@ public class NewJFrame extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     
-    Controller myOwner;
-    JPanel myPanel;
+    private Controller myOwner;
+    private JPanel myPanel;
+    
     
     public NewJFrame(Controller owner) {
         initComponents();
@@ -31,9 +32,24 @@ public class NewJFrame extends javax.swing.JFrame {
         myPanel.setVisible(true);
         this.setVisible(true);
     }
-
     
-    // Registration View
+    
+    // User Management: -----------------------------------------------------------------------------
+    
+    
+    public String getCurrentUser(){
+        return myOwner.getCurrentUsername();
+    }
+    
+    public boolean logout(){
+        return myOwner.logCurrentUserOut();
+        this.remove(myPanel);
+        myPanel = new RegistrationView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+        this.setVisible(true);
+    }
     
     public void userDidEnterLogin(String name, String passwort){
         System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
@@ -49,14 +65,7 @@ public class NewJFrame extends javax.swing.JFrame {
         //boolean flag = false; // Adminview anzeigen true, Userview false
         //presentJBetUI(flag);
     }
-    
-    public void showAddUserView(){
-        this.remove(myPanel);
-        myPanel = new NewUserView(this);
-        this.add(myPanel, BorderLayout.CENTER);
-        this.setLocationRelativeTo(null);
-        myPanel.setVisible(true);
-    }
+
     
     public void creatNewUser(boolean isAdmin, String name, String passwort){
         System.out.println("Neuer Benutzer: (Admin: " + isAdmin + " )Benutzername: " + name + "  Passwort: " + passwort);
@@ -68,6 +77,21 @@ public class NewJFrame extends javax.swing.JFrame {
             System.out.println("ERROR: Could not create User");
         }
     }
+    
+    
+    
+    
+    // present Views Methoden: -----------------------------------------------------------------------------
+    
+    
+    public void showAddUserView(){
+        this.remove(myPanel);
+        myPanel = new NewUserView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+    }
+    
     
     public void presentJBetUI(boolean isAdmin){
         this.remove(myPanel);
@@ -81,17 +105,38 @@ public class NewJFrame extends javax.swing.JFrame {
         myPanel.setVisible(true);
     }
     
+    public void presentLeagueEdit(){
+        this.remove(myPanel);
+        myPanel = new EnterLeagueDetailAdminView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+    }
+    
     public void presentEnterMatchResults(boolean admin){
         this.remove(myPanel);
         if(admin){
             myPanel = new EnterMatchResultsAdminView(this);
         }else{
-            //myPanel = new EnterMatchResultsAdminView(this);
+            myPanel = new EnterUserBetsView(this);
         }
         this.add(myPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
         myPanel.setVisible(true);
     }
+    
+    public void presentLeaderboard(){
+        this.remove(myPanel);
+        myPanel = new LeaderboardView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

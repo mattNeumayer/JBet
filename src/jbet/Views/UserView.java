@@ -58,6 +58,7 @@ public class UserView extends javax.swing.JPanel {
         });
 
         editProfileButton.setText("Edit Profile");
+        editProfileButton.setEnabled(false);
         editProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editProfileButtonActionPerformed(evt);
@@ -113,11 +114,11 @@ public class UserView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterBetsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBetsButtonActionPerformed
-        // TODO add your handling code here:
+        mySuperFrame.presentEnterMatchResults(false);
     }//GEN-LAST:event_enterBetsButtonActionPerformed
 
     private void showLeaderboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLeaderboardButtonActionPerformed
-        // TODO add your handling code here:
+        mySuperFrame.presentLeaderboard();
     }//GEN-LAST:event_showLeaderboardButtonActionPerformed
 
     private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
@@ -125,7 +126,9 @@ public class UserView extends javax.swing.JPanel {
     }//GEN-LAST:event_editProfileButtonActionPerformed
 
     private void enterLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterLogoutButtonActionPerformed
-        // TODO add your handling code here:
+        if (!mySuperFrame.logout()){
+            System.out.println("ERROR");
+        }
     }//GEN-LAST:event_enterLogoutButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
