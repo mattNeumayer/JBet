@@ -163,32 +163,41 @@ public class DbControl {
     //List methods
     
     public ArrayList<String> listAllUsername(){
-        ResultSet rs = executeQuery("SELECT name FROM user ORDER BY name ASC");
+        ResultSet rs = executeQuery("SELECT name FROM user ORDER BY name");
         ArrayList<String> list = new ArrayList();
         try {
             while(rs.next()){
                 list.add(rs.getString(1));
             }
-        } catch (SQLException e) {
-            list.add("");
-        }
-        finally{
             return list;
+        } catch (SQLException e) {
+            return null;
         }
     }
     
-    public ArrayList<> listAllLeague(){
-        ResultSet rs = executeQuery("SELECT name FROM league ORDER BY name ASC");
-        ArrayList<League> list = new ArrayList();
+    public ArrayList<String> listAllLeague(){
+        ResultSet rs = executeQuery("SELECT name FROM league ORDER BY name");
+        ArrayList<String> list = new ArrayList();
         try {
             while(rs.next()){
                 list.add(rs.getString(1));
             }
-        } catch (SQLException e) {
-            list.add("");
-        }
-        finally{
             return list;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+    
+    public ArrayList<Season> listAllSeason(){
+        ResultSet rs = executeQuery("SELECT league, startyear FROM season ORDER BY league,startyear");
+        ArrayList<Season> list = new ArrayList();
+        try {
+            while(rs.next()){
+                list.add(new Season(rs.getString(1),rs.getInt(2)));
+            }
+            return list;
+        } catch (SQLException e){ 
+            return null;
         }
     }
     
