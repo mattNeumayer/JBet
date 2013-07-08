@@ -2,6 +2,7 @@ package jbet;
 
 import java.awt.*;
 import javax.swing.JPanel;
+import jbet.Views.*;
 
 /*
  * To change this template, choose Tools | Templates
@@ -36,6 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
     
     public void userDidEnterLogin(String name, String passwort){
         System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
+        // Ausgeklammert weil keine Datenbank
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
@@ -43,6 +45,9 @@ public class NewJFrame extends javax.swing.JFrame {
         }else{
             System.out.println("Login False - Reenter Username of Password");
         }
+        
+        //boolean flag = false; // Adminview anzeigen true, Userview false
+        //presentJBetUI(flag);
     }
     
     public void showAddUserView(){
@@ -53,12 +58,12 @@ public class NewJFrame extends javax.swing.JFrame {
         myPanel.setVisible(true);
     }
     
-    public void creatNewUser(boolean admin, String name, String passwort){
-        System.out.println("Neuer Benutzer: (Admin: " + admin + " )Benutzername: " + name + "  Passwort: " + passwort);
-        boolean valid = myOwner.addUser(name,passwort,admin);
+    public void creatNewUser(boolean isAdmin, String name, String passwort){
+        System.out.println("Neuer Benutzer: (Admin: " + isAdmin + " )Benutzername: " + name + "  Passwort: " + passwort);
+        boolean valid = myOwner.addUser(name,passwort,isAdmin);
         if (valid) {
             System.out.println("Login True");
-            presentJBetUI(admin);
+            presentJBetUI(isAdmin);
         }else{
             System.out.println("ERROR: Could not create User");
         }
@@ -67,15 +72,26 @@ public class NewJFrame extends javax.swing.JFrame {
     public void presentJBetUI(boolean isAdmin){
         this.remove(myPanel);
         if(isAdmin){
-            myPanel = new UserView(this);
+            myPanel = new AdminStartView(this);
         }else{
-            myPanel = new AdminView(this);
+            myPanel = new UserView(this);
         }
         this.add(myPanel, BorderLayout.CENTER);
         this.setLocationRelativeTo(null);
         myPanel.setVisible(true);
     }
-
+    
+    public void presentEnterMatchResults(boolean admin){
+        this.remove(myPanel);
+        if(admin){
+            myPanel = new EnterMatchResultsAdminView(this);
+        }else{
+            //myPanel = new EnterMatchResultsAdminView(this);
+        }
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
