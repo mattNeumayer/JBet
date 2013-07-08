@@ -18,7 +18,7 @@ public class DbControl {
     private Statement st;
 
     private DbControl() {
-        //connect();
+        connect();
     }
 
     /**
@@ -197,21 +197,19 @@ public class DbControl {
     }
 
     private ResultSet executeQuery(String sql) {
-        /*try {
+        try {
             return st.executeQuery(sql);
         } catch (SQLException e) {
             return null;
-        }*/
-        return null;
+        }
     }
 
     private int executeUpdate(String sql) {
-        /*try {
+        try {
             return st.executeUpdate(sql);
         } catch (SQLException e) {
             return -1;
-        }*/
-        return -1;
+        }
     }
 
     private void connect() {
@@ -219,19 +217,22 @@ public class DbControl {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             System.err.println("Failed loading MySQL driver!");
+            e.printStackTrace();
         }
 
         try {
             con = DriverManager
-                    .getConnection("jdbc:mysql://localhost/JBet?user=root&password=test");
+                    .getConnection("jdbc:mysql://172.16.11.1/Q11_gruppe4" ,"Q11_gruppe4" , "1234");
         } catch (SQLException e) {
             System.err.println("Failed connecting to database!");
+            e.printStackTrace();
         }
 
         try {
             st = con.createStatement();
         } catch (SQLException e) {
             System.err.println("Failed creating a Statement!");
+            e.printStackTrace();
         }
     }
 }
