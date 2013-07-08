@@ -12,7 +12,7 @@ public class Bet {
     private int score1, score2;
     private Matchup mu;
     
-    public Bet(Matchday mu, int score1, int score2) {
+    public Bet(Matchup mu, int score1, int score2) {
         this.score1 = score1;
         this.score2 = score2;
         this.mu = mu;
