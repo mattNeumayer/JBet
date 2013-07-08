@@ -1,11 +1,7 @@
-/**
- * 
- */
 package jbet.components;
 
 /**
- * 05.06.2013
- *
+ * @author Matthias Neumayer
  */
 public class Season {
     private League l;
@@ -30,9 +26,7 @@ public class Season {
     public int getStartYear() {
         return this.startYear;
     }
-    /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
+    
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -41,9 +35,7 @@ public class Season {
 	result = prime * result + this.startYear;
 	return result;
     }
-    /* (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
+
     @Override
     public boolean equals(Object obj) {
 	if (this == obj)
@@ -62,9 +54,7 @@ public class Season {
 	    return false;
 	return true;
     }
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+
     @Override
     public String toString() {
 	return this.l + " "+ this.startYear;

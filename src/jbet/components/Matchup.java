@@ -1,11 +1,8 @@
-/**
- * 
- */
 package jbet.components;
 
 /**
- * 05.06.2013
  * 
+ * @author Matthias Neumayer
  */
 public class Matchup {
     private Matchday matchday;
@@ -68,9 +65,20 @@ public class Matchup {
 	return this.team2;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
+    /**
+     * @return the matchday
      */
+    public Matchday getMatchday() {
+	return this.matchday;
+    }
+
+    /**
+     * @return the hasScores
+     */
+    public boolean hasScores() {
+        return this.hasScores;
+    }
+    
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -87,9 +95,6 @@ public class Matchup {
 	return result;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(Object obj) {
 	if (this == obj)
@@ -123,29 +128,10 @@ public class Matchup {
 	return true;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
 	return this.matchday + "=" + this.team1 + this.scoreTeam1 + ":"
 		+ this.scoreTeam2 + this.team2;
-    }
-
-    /**
-     * @return the matchday
-     */
-    public Matchday getMatchday() {
-	return this.matchday;
-    }
-
-    /**
-     * @return the hasScores
-     */
-    public boolean hasScores() {
-        return this.hasScores;
     }
 
 }
