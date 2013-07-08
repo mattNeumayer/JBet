@@ -15,6 +15,7 @@ public class Controller {
     
     private static DbControl model;
     private static NewJFrame frame;
+    private String loggedInUser;
     
     public Controller(){
         model = DbControl.getInstance();
@@ -52,11 +53,31 @@ public class Controller {
         return model.checkLogin(name,passwort);
     }
 
-  //  public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
-  //      frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
-  //  }
+    // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
+    //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
+    // }
     
-  //  public HashMap<String, Boolean> getAllUser(){
-  //      return DbControl.getAllUser();
-  //  }
+    // public HashMap<String, Boolean> getAllUser(){
+    //     return DbControl.getAllUser();
+    // }
+    
+    // public void addLeague(String name)
+    // {
+    //     DBControl.addLeague(name);
+    // }
+    
+    // public String[] getAllLeague()
+    // {
+    //     return DBControl.getAllLeague();
+    // }
+    
+    // public void addSeason(String name)
+    // {
+    //     DBControl.addSeason(name);
+    // }
+    
+    // public void addBet(String name,String Matchup,int score1, int score2)
+    // {
+    //     DBControl.addBet(name,Matchup,score1,score2);
+    // }
 }
