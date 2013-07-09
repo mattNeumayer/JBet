@@ -62,10 +62,9 @@ public class Controller {
     // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
     //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
     // }
-    // public HashMap<String, Boolean> getAllUser(){
-    //     return DbControl.getAllUser();
-    // }
-    
+    public String[] getAllUser(){
+        return DbControl.getAllUser();
+    }
     // public void addLeague(String name)
     // {
     //     DBControl.addLeague(name);

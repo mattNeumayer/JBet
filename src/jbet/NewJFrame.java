@@ -42,13 +42,16 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     
     public boolean logout(){
-        return myOwner.logCurrentUserOut();
-        this.remove(myPanel);
-        myPanel = new RegistrationView(this);
-        this.add(myPanel, BorderLayout.CENTER);
-        this.setLocationRelativeTo(null);
-        myPanel.setVisible(true);
-        this.setVisible(true);
+        if(myOwner.logCurrentUserOut()){
+            this.remove(myPanel);
+            myPanel = new RegistrationView(this);
+            this.add(myPanel, BorderLayout.CENTER);
+            this.setLocationRelativeTo(null);
+            myPanel.setVisible(true);
+            this.setVisible(true);
+            return true;
+        }
+        return false;
     }
     
     public void userDidEnterLogin(String name, String passwort){
