@@ -1,5 +1,6 @@
 package jbet;
 
+import java.util.ArrayList;
 import jbet.components.*;
 import java.util.HashMap;
 
@@ -10,7 +11,7 @@ public class Controller {
 
     private static DbControl model;
     private static NewJFrame frame;
-    private String loggedInUser;
+    private User loggedInUser;
 
     public Controller() {
         model = DbControl.getInstance();
@@ -45,26 +46,55 @@ public class Controller {
      * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
      */
     public boolean requestUserLoginValid(String name, String passwort) {
+        if (model.checkLogin(name, passwort)){
+            loggedInUser = new User(name,passwort,model.isAdmin(name));    
+        }
         return model.checkLogin(name, passwort);
     }
+    
+    public String getCurrentUsername(){
+        return loggedInUser.getUsername();
+    }
+    
+    public boolean isCurrentUserAdmin(){
+        return loggedInUser.isAdmin();
+    }
+    
+
+    public boolean logCurrentUserOut(){
+        loggedInUser = null;
+        return true;
+
+    }
+    
     // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
     //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
     // }
-    // public HashMap<String, Boolean> getAllUser(){
-    //     return DbControl.getAllUser();
-    // }
+    
+    public ArrayList<String> getAllUser(){
+        return model.listAllUsername();
+    }
+    
     // public void addLeague(String name)
     // {
     //     DBControl.addLeague(name);
     // }
-    // public String[] getAllLeague()
-    // {
-    //     return DBControl.getAllLeague();
-    // }
+
+    public ArrayList<String> getAllLeague(){
+        return model.listAllLeague();
+    }
+    
+
     // public void addSeason(String name)
     // {
     //     DBControl.addSeason(name);
     // }
+    
+    public ArrayList<Season> getAllSeasons()
+    {
+        return model.listAllSeason();
+    }    
+    
     // public void addBet(String name,String Matchup,int score1, int score2)
     // {
     //     DBControl.addBet(name,Matchup,score1,score2);
