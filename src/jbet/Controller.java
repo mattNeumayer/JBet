@@ -59,7 +59,7 @@ public class Controller {
         return loggedInUser.isAdmin();
     }
     
-    public void loggCorrentUserOut(){
+    public void logCurrentUserOut(){
         loggedInUser = null;
     }
     
