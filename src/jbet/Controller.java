@@ -59,6 +59,10 @@ public class Controller {
         return loggedInUser.isAdmin();
     }
     
+    public void loggCorrentUserOut(){
+        loggedInUser = null;
+    }
+    
     // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
     //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
     // }
