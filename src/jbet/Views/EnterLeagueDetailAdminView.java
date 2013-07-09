@@ -17,7 +17,7 @@ public class EnterLeagueDetailAdminView extends javax.swing.JPanel {
     /**
      * Creates new form EnterLeagueDetailAdminView
      */
-    public EnterLeagueDetailAdminView(NewJFrame superFrame) {
+    public EnterLeagueDetailAdminView(NewJFrame superFrame /* HIER VARIABLE ÜBERGEBEN DIE GEBRACHT WERDEN */) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());

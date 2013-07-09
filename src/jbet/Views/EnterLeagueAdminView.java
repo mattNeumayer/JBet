@@ -4,16 +4,20 @@
  */
 package jbet.Views;
 
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import jbet.NewJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class EnterLeagueAdminView extends javax.swing.JPanel {
+public class EnterLeagueAdminView extends javax.swing.JPanel implements ListSelectionListener{
 
     
     private NewJFrame mySuperFrame;
+    private String currentSelectedLiga;
     
     /**
      * Creates new form EnterLeagueDetailsAdminView
@@ -22,8 +26,17 @@ public class EnterLeagueAdminView extends javax.swing.JPanel {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
+        LeagueList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION );
+        LeagueList.addListSelectionListener(this);
     }
 
+    
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        currentSelectedLiga = LeagueList.getSelectedValue().toString();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +52,7 @@ public class EnterLeagueAdminView extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         addLeagueButton = new javax.swing.JButton();
         editLeagueButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         LeagueList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -53,11 +66,26 @@ public class EnterLeagueAdminView extends javax.swing.JPanel {
         jLabel1.setText("Enter / Edit League");
 
         addLeagueButton.setText("Add League");
+        addLeagueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addLeagueButtonActionPerformed(evt);
+            }
+        });
 
         editLeagueButton.setText("Edit League");
+        editLeagueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editLeagueButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Back");
-        jButton1.setToolTipText("");
+        back.setText("Back");
+        back.setToolTipText("");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,7 +96,7 @@ public class EnterLeagueAdminView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(back)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -84,7 +112,7 @@ public class EnterLeagueAdminView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -96,11 +124,24 @@ public class EnterLeagueAdminView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLeagueButtonActionPerformed
+        mySuperFrame.presentleagueUI();
+    }//GEN-LAST:event_addLeagueButtonActionPerformed
+
+    private void editLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLeagueButtonActionPerformed
+        mySuperFrame.presentleagueUI();
+    }//GEN-LAST:event_editLeagueButtonActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        mySuperFrame.presentJBetUI(true);
+    }//GEN-LAST:event_backActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList LeagueList;
     private javax.swing.JButton addLeagueButton;
+    private javax.swing.JButton back;
     private javax.swing.JButton editLeagueButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

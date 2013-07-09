@@ -4,15 +4,20 @@
  */
 package jbet.Views;
 
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import jbet.NewJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class AdminStartView extends javax.swing.JPanel {
+public class AdminStartView extends javax.swing.JPanel implements ListSelectionListener{
 
     private NewJFrame mySuperFrame;
+    private String currentselection;
     
     /**
      * Creates new form AdminStartView
@@ -22,6 +27,9 @@ public class AdminStartView extends javax.swing.JPanel {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
+        isAdminCheckBox.setEnabled(false);
+        userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION );
+        userList.addListSelectionListener(this);
     }
 
     /**
@@ -68,6 +76,11 @@ public class AdminStartView extends javax.swing.JPanel {
         });
 
         isAdminCheckBox.setText("Is Admin");
+        isAdminCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isAdminCheckBoxActionPerformed(evt);
+            }
+        });
 
         logoutButton.setText("Logout");
         logoutButton.setToolTipText("");
@@ -85,20 +98,19 @@ public class AdminStartView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(isAdminCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(enterResults)
-                                .addComponent(enterLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(logoutButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(isAdminCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(enterResults)
+                            .addComponent(enterLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(logoutButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,6 +148,23 @@ public class AdminStartView extends javax.swing.JPanel {
         mySuperFrame.logout();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void isAdminCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isAdminCheckBoxActionPerformed
+        mySuperFrame.setAdmin(currentselection,isAdminCheckBox.isSelected());
+    }//GEN-LAST:event_isAdminCheckBoxActionPerformed
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        /*int firstIndex = e.getFirstIndex();
+        ListModel<String> model = userList.getModel();
+        String name = model.getElementAt(firstIndex);*/
+        currentselection = userList.getSelectedValue().toString();
+        isAdminCheckBox.setEnabled(true);
+        isAdminCheckBox.setSelected(mySuperFrame.isAdmin(currentselection));
+        //boolean isAdjusting = e.getValueIsAdjusting();    
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton enterLeague;
     private javax.swing.JButton enterResults;

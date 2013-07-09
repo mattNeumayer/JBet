@@ -54,13 +54,21 @@ public class NewJFrame extends javax.swing.JFrame {
         return false;
     }
     
+    public boolean isAdmin(String name){
+        return myOwner.isAdmin(name);
+    }
+    
+    public boolean setAdmin(String name, boolean isAdmin){
+        return myOwner.setAdmin(name, isAdmin);
+    }
+    
     public void userDidEnterLogin(String name, String passwort){
         System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
         // Ausgeklammert weil keine Datenbank
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
-            presentJBetUI(myOwner.isAdmin(name));
+            presentJBetUI(isAdmin(name));
         }else{
             System.out.println("Login False - Reenter Username of Password");
         }
@@ -136,6 +144,13 @@ public class NewJFrame extends javax.swing.JFrame {
         myPanel.setVisible(true);
     }
     
+    public void presentleagueUI(/* TO DO: HIER VARIABLE ÜBERGEBEN, DIE GEBRAUCHT WERDEN */){
+        this.remove(myPanel);
+        myPanel = new EnterLeagueDetailAdminView(this);
+        this.add(myPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        myPanel.setVisible(true);
+    }
     // -----------------------------------------------------------------------------------------------------
     
     
