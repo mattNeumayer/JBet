@@ -1,5 +1,6 @@
 package jbet;
 
+import java.util.ArrayList;
 import jbet.components.*;
 import java.util.HashMap;
 
@@ -59,31 +60,41 @@ public class Controller {
         return loggedInUser.isAdmin();
     }
     
+
     public boolean logCurrentUserOut(){
         loggedInUser = null;
         return true;
+
     }
     
     // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
     //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
     // }
-    public String[] getAllUser(){
-        return DbControl.getAllUser();
+    
+    public ArrayList<String> getAllUser(){
+        return model.listAllUsername();
     }
+    
     // public void addLeague(String name)
     // {
     //     DBControl.addLeague(name);
     // }
+
+    public ArrayList<String> getAllLeague(){
+        return model.listAllLeague();
+    }
     
-    // public String[] getAllLeague()
-    // {
-    //     return DBControl.getAllLeague();
-    // }
-    
+
     // public void addSeason(String name)
     // {
     //     DBControl.addSeason(name);
     // }
+    
+    public ArrayList<Season> getAllSeasons()
+    {
+        return model.listAllSeason();
+    }    
+    
     // public void addBet(String name,String Matchup,int score1, int score2)
     // {
     //     DBControl.addBet(name,Matchup,score1,score2);
