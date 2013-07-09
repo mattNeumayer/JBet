@@ -10,7 +10,7 @@ public class Controller {
 
     private static DbControl model;
     private static NewJFrame frame;
-    private String loggedInUser;
+    private User loggedInUser;
 
     public Controller() {
         model = DbControl.getInstance();
@@ -45,14 +45,20 @@ public class Controller {
      * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
      */
     public boolean requestUserLoginValid(String name, String passwort) {
-        if (model.checkLogin(name, passwort))
-            loggedInUser = name;                 
+        if (model.checkLogin(name, passwort)){
+            loggedInUser = new User(name,passwort,model.isAdmin(name));    
+        }
         return model.checkLogin(name, passwort);
     }
     
     public String getCurrentUsername(){
-        return loggedInUser;
+        return loggedInUser.getUsername();
     }
+    
+    public boolean isCurrentUserAdmin(){
+        return loggedInUser.isAdmin();
+    }
+    
     // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
     //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
     // }
