@@ -59,8 +59,9 @@ public class Controller {
         return loggedInUser.isAdmin();
     }
     
-    public void logCurrentUserOut(){
+    public boolean logCurrentUserOut(){
         loggedInUser = null;
+        return true;
     }
     
     // public void ergebnisseEintragen(String mannschaft1, String mannschaft2, int ergebnis1, int ergebnis2){
