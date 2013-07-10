@@ -4,20 +4,20 @@
  */
 package jbet.Views;
 
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class EnterLeagueDetailAdminView extends javax.swing.JPanel {
+public class EnterLeagueDetailView extends javax.swing.JPanel {
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
-     * Creates new form EnterLeagueDetailAdminView
+     * Creates new form EnterLeagueDetailView
      */
-    public EnterLeagueDetailAdminView(NewJFrame superFrame /* HIER VARIABLE ÜBERGEBEN DIE GEBRACHT WERDEN */) {
+    public EnterLeagueDetailView(MainJFrame superFrame /* HIER VARIABLE ÜBERGEBEN DIE GEBRACHT WERDEN */) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());

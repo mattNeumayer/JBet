@@ -4,7 +4,7 @@
  */
 package jbet.Views;
 
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
@@ -12,12 +12,12 @@ import jbet.NewJFrame;
  */
 public class LeaderboardView extends javax.swing.JPanel {
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
      * Creates new form LeaderboardView
      */
-    public LeaderboardView(NewJFrame superFrame) {
+    public LeaderboardView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());

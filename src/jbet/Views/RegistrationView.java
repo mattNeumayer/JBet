@@ -1,7 +1,7 @@
 package jbet.Views;
 
 import java.awt.Dimension;
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 
 
@@ -17,12 +17,12 @@ import jbet.NewJFrame;
 
 public class RegistrationView extends javax.swing.JPanel {
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
      * Creates new form RegistrationView
      */   
-    public RegistrationView(NewJFrame superFrame) {
+    public RegistrationView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(this.getPreferredSize());
@@ -129,7 +129,7 @@ public class RegistrationView extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserButtonActionPerformed
-        mySuperFrame.showAddUserView();
+        mySuperFrame.presentNewUserView();
     }//GEN-LAST:event_newUserButtonActionPerformed
 
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed

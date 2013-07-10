@@ -7,22 +7,22 @@ package jbet.Views;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class EnterLeagueAdminView extends javax.swing.JPanel implements ListSelectionListener{
+public class EnterLeagueView extends javax.swing.JPanel implements ListSelectionListener{
 
     
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     private String currentSelectedLiga;
     
     /**
      * Creates new form EnterLeagueDetailsAdminView
      */
-    public EnterLeagueAdminView(NewJFrame superFrame) {
+    public EnterLeagueView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
@@ -126,15 +126,15 @@ public class EnterLeagueAdminView extends javax.swing.JPanel implements ListSele
     }// </editor-fold>//GEN-END:initComponents
 
     private void addLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLeagueButtonActionPerformed
-        mySuperFrame.presentleagueUI();
+        mySuperFrame.presentEnterLeagueView();
     }//GEN-LAST:event_addLeagueButtonActionPerformed
 
     private void editLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLeagueButtonActionPerformed
-        mySuperFrame.presentleagueUI();
+        mySuperFrame.presentEnterLeagueView();
     }//GEN-LAST:event_editLeagueButtonActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        mySuperFrame.presentJBetUI(true);
+        mySuperFrame.presentJBetView(true);
     }//GEN-LAST:event_backActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

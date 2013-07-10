@@ -28,7 +28,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="enterResults" min="-2" max="-2" attributes="0"/>
-                          <Component id="enterLeague" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="enterLeague" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -105,6 +105,7 @@
     <Component class="javax.swing.JButton" name="enterLeague">
       <Properties>
         <Property name="text" type="java.lang.String" value="League eintragen"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterLeagueActionPerformed"/>
@@ -112,7 +113,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="enterResults">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ergebnisse eintrage"/>
+        <Property name="text" type="java.lang.String" value="Ergebnisse eintragen"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterResultsActionPerformed"/>

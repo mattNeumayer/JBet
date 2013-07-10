@@ -10,12 +10,12 @@ import java.util.HashMap;
 public class Controller {
 
     private static DbControl model;
-    private static NewJFrame frame;
+    private static MainJFrame frame;
     private User loggedInUser;
 
     public Controller() {
         model = DbControl.getInstance();
-        frame = new NewJFrame(this);
+        frame = new MainJFrame(this);
     }
 
     /**
@@ -99,4 +99,8 @@ public class Controller {
     // {
     //     DBControl.addBet(name,Matchup,score1,score2);
     // }
+
+    public boolean setAdmin(String name, boolean admin) {
+        return true;
+    }
 }

@@ -4,7 +4,7 @@
  */
 package jbet.Views;
 
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
@@ -12,12 +12,12 @@ import jbet.NewJFrame;
  */
 public class EnterUserBetsView extends javax.swing.JPanel {
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
      * Creates new form EnterUserBetsView
      */
-    public EnterUserBetsView(NewJFrame superFrame) {
+    public EnterUserBetsView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());

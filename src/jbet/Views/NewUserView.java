@@ -4,7 +4,7 @@
  */
 package jbet.Views;
 
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
@@ -12,13 +12,13 @@ import jbet.NewJFrame;
  */
 public class NewUserView extends javax.swing.JPanel {
     
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
      * Creates new form NewUserView
      */
     
-    public NewUserView(NewJFrame superFrame) {
+    public NewUserView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
@@ -50,7 +50,7 @@ public class NewUserView extends javax.swing.JPanel {
 
         labelWelcome.setAlignment(java.awt.Label.CENTER);
         labelWelcome.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        labelWelcome.setText("Welcome, here you can creat a new User");
+        labelWelcome.setText("Welcome, here you can create a new User");
 
         username.setText("jTextField1");
 
@@ -143,7 +143,7 @@ public class NewUserView extends javax.swing.JPanel {
         String passwordString = new String(password.getPassword());
         if(passwordString.equals(new String(passwordRepeat.getPassword()))){
             if(acceptAGBCheckboox.getState() == true){
-                mySuperFrame.creatNewUser(false, passwordString, username.getText());
+                mySuperFrame.createNewUser(false, passwordString, username.getText());
             }else{
                 didNotAcceptAGB.setText("Accept the AGB");
             }

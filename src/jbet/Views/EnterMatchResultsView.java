@@ -4,20 +4,20 @@
  */
 package jbet.Views;
 
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class EnterMatchResultsAdminView extends javax.swing.JPanel {
+public class EnterMatchResultsView extends javax.swing.JPanel {
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
-     * Creates new form EnterMatchResultsAdminView
+     * Creates new form EnterMatchResultsView
      */
-    public EnterMatchResultsAdminView(NewJFrame superFrame) {
+    public EnterMatchResultsView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());

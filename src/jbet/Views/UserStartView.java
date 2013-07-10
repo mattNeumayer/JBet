@@ -4,20 +4,20 @@
  */
 package jbet.Views;
 
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class UserView extends javax.swing.JPanel {
+public class UserStartView extends javax.swing.JPanel {
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     
     /**
-     * Creates new form UserView
+     * Creates new form UserStartView
      */
-    public UserView(NewJFrame superFrame) {
+    public UserStartView(MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
@@ -114,11 +114,11 @@ public class UserView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterBetsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBetsButtonActionPerformed
-        mySuperFrame.presentEnterMatchResults(false);
+        mySuperFrame.presentEnterMatchResultsView(false);
     }//GEN-LAST:event_enterBetsButtonActionPerformed
 
     private void showLeaderboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLeaderboardButtonActionPerformed
-        mySuperFrame.presentLeaderboard();
+        mySuperFrame.presentLeaderboardView();
     }//GEN-LAST:event_showLeaderboardButtonActionPerformed
 
     private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed

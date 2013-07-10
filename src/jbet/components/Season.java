@@ -6,6 +6,7 @@ package jbet.components;
 public class Season {
     private League l;
     private int startYear;
+    
     /**
      * @param l
      * @param startYear
@@ -14,6 +15,11 @@ public class Season {
 	this.l = l;
 	this.startYear = startYear;
     }
+    
+    public Season(String l, int startYear) {
+        this(new League(l),startYear);
+    }
+    
     /**
      * @return the l
      */

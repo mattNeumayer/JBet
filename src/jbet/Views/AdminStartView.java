@@ -8,7 +8,7 @@ import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import jbet.NewJFrame;
+import jbet.MainJFrame;
 
 /**
  *
@@ -16,14 +16,14 @@ import jbet.NewJFrame;
  */
 public class AdminStartView extends javax.swing.JPanel implements ListSelectionListener{
 
-    private NewJFrame mySuperFrame;
+    private MainJFrame mySuperFrame;
     private String currentselection;
     
     /**
      * Creates new form AdminStartView
      */
     
-    public AdminStartView (NewJFrame superFrame) {
+    public AdminStartView (MainJFrame superFrame) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
@@ -62,13 +62,14 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
         jScrollPane1.setViewportView(userList);
 
         enterLeague.setText("League eintragen");
+        enterLeague.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         enterLeague.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterLeagueActionPerformed(evt);
             }
         });
 
-        enterResults.setText("Ergebnisse eintrage");
+        enterResults.setText("Ergebnisse eintragen");
         enterResults.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterResultsActionPerformed(evt);
@@ -105,7 +106,7 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(enterResults)
-                            .addComponent(enterLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enterLeague))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(logoutButton)
@@ -137,11 +138,11 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterLeagueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterLeagueActionPerformed
-        mySuperFrame.presentLeagueEdit();
+        mySuperFrame.presentEnterLeagueView();
     }//GEN-LAST:event_enterLeagueActionPerformed
 
     private void enterResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterResultsActionPerformed
-        mySuperFrame.presentEnterMatchResults(true);
+        mySuperFrame.presentEnterMatchResultsView(true);
     }//GEN-LAST:event_enterResultsActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
