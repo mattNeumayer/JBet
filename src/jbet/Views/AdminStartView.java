@@ -4,7 +4,7 @@
  */
 package jbet.Views;
 
-import javax.swing.ListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -18,6 +18,7 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
 
     private MainJFrame mySuperFrame;
     private String currentselection;
+    private DefaultListModel userListModel;
     
     /**
      * Creates new form AdminStartView
@@ -30,6 +31,13 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
         isAdminCheckBox.setEnabled(false);
         userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION );
         userList.addListSelectionListener(this);
+        
+        userListModel = new DefaultListModel();
+        String[] user = mySuperFrame.getController().getAllUser();
+        for(int i = 0; i < user.length; i++){
+            userListModel.addElement(user[i]);
+        }
+        userList.setModel(userListModel);
     }
 
     /**
@@ -44,8 +52,8 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userList = new javax.swing.JList();
-        enterLeague = new javax.swing.JButton();
-        enterResults = new javax.swing.JButton();
+        enterLeagueButton = new javax.swing.JButton();
+        enterResultsButton = new javax.swing.JButton();
         isAdminCheckBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         logoutButton = new javax.swing.JButton();
@@ -61,18 +69,18 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
         });
         jScrollPane1.setViewportView(userList);
 
-        enterLeague.setText("League eintragen");
-        enterLeague.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        enterLeague.addActionListener(new java.awt.event.ActionListener() {
+        enterLeagueButton.setText("League eintragen");
+        enterLeagueButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        enterLeagueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterLeagueActionPerformed(evt);
+                enterLeagueButtonActionPerformed(evt);
             }
         });
 
-        enterResults.setText("Ergebnisse eintragen");
-        enterResults.addActionListener(new java.awt.event.ActionListener() {
+        enterResultsButton.setText("Ergebnisse eintragen");
+        enterResultsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterResultsActionPerformed(evt);
+                enterResultsButtonActionPerformed(evt);
             }
         });
 
@@ -104,9 +112,9 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(isAdminCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(enterResults)
-                            .addComponent(enterLeague))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(enterResultsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(enterLeagueButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(logoutButton)
@@ -126,9 +134,9 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(enterLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(enterLeagueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(enterResults, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(enterResultsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -137,38 +145,34 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enterLeagueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterLeagueActionPerformed
+    private void enterLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterLeagueButtonActionPerformed
         mySuperFrame.presentEnterLeagueView();
-    }//GEN-LAST:event_enterLeagueActionPerformed
+    }//GEN-LAST:event_enterLeagueButtonActionPerformed
 
-    private void enterResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterResultsActionPerformed
-        mySuperFrame.presentEnterMatchResultsView(true);
-    }//GEN-LAST:event_enterResultsActionPerformed
+    private void enterResultsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterResultsButtonActionPerformed
+        mySuperFrame.presentEnterMatchResultsView();
+    }//GEN-LAST:event_enterResultsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         mySuperFrame.logout();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void isAdminCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isAdminCheckBoxActionPerformed
-        mySuperFrame.setAdmin(currentselection,isAdminCheckBox.isSelected());
+        boolean temp = mySuperFrame.getController().setAdmin(currentselection,isAdminCheckBox.isSelected());
     }//GEN-LAST:event_isAdminCheckBoxActionPerformed
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        /*int firstIndex = e.getFirstIndex();
-        ListModel<String> model = userList.getModel();
-        String name = model.getElementAt(firstIndex);*/
         currentselection = userList.getSelectedValue().toString();
         isAdminCheckBox.setEnabled(true);
-        isAdminCheckBox.setSelected(mySuperFrame.isAdmin(currentselection));
-        //boolean isAdjusting = e.getValueIsAdjusting();    
+        isAdminCheckBox.setSelected(mySuperFrame.getController().isAdmin(currentselection)); 
     }
     
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton enterLeague;
-    private javax.swing.JButton enterResults;
+    private javax.swing.JButton enterLeagueButton;
+    private javax.swing.JButton enterResultsButton;
     private javax.swing.JCheckBox isAdminCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

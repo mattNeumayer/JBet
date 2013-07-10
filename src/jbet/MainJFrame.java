@@ -30,6 +30,10 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
+    public Controller getController(){
+        return myOwner;
+    }
+    
     
     // User Management: -----------------------------------------------------------------------------
     
@@ -50,17 +54,13 @@ public class MainJFrame extends javax.swing.JFrame {
         return myOwner.isAdmin(name);
     }
     
-    public boolean setAdmin(String name, boolean isAdmin){
-        return myOwner.setAdmin(name, isAdmin);
-    }
-    
     public void userDidEnterLogin(String name, String passwort){
         System.out.println("Benutzername: " + name + "  Passwort: " + passwort);
         // Ausgeklammert weil keine Datenbank
         boolean valid = myOwner.requestUserLoginValid(name,passwort);
         if (valid) {
             System.out.println("Login True");
-            presentJBetView(isAdmin(name));
+            presentJBetView();
         }else{
             System.out.println("Login False - Reenter Username of Password");
         }
@@ -75,7 +75,7 @@ public class MainJFrame extends javax.swing.JFrame {
         boolean valid = myOwner.addUser(name,passwort,isAdmin);
         if (valid) {
             System.out.println("Login True");
-            presentJBetView(isAdmin);
+            presentJBetView();
         }else{
             System.out.println("ERROR: Could not create User");
         }
@@ -104,16 +104,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
     
-    public void presentJBetView(boolean isAdmin){
-        if(isAdmin){
+    public void presentJBetView(){
+        if(myOwner.isCurrentUserAdmin()){
             changePanel(new AdminStartView(this));
         }else{
             changePanel(new UserStartView(this));
         }
     }
     
-    public void presentEnterMatchResultsView(boolean admin){
-        if(admin){
+    public void presentEnterMatchResultsView(){
+        if(myOwner.isCurrentUserAdmin()){
             changePanel(new EnterMatchResultsView(this));
         }else{
             changePanel(new EnterUserBetsView(this));
@@ -124,7 +124,11 @@ public class MainJFrame extends javax.swing.JFrame {
         changePanel(new LeaderboardView(this));
     }
     
-    public void presentEnterLeagueView(/* TO DO: HIER VARIABLE ÜBERGEBEN, DIE GEBRAUCHT WERDEN */){
-        changePanel(new EnterLeagueDetailView(this));
+    public void presentEnterLeagueView(){
+        changePanel(new EnterLeagueView(this));
+    }
+    
+     public void presentEnterLeagueDetailView(String leagueName){
+        changePanel(new EnterLeagueDetailView(this, leagueName));
     }
 }

@@ -4,23 +4,48 @@
  */
 package jbet.Views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import jbet.MainJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class EnterLeagueDetailView extends javax.swing.JPanel {
+public class EnterLeagueDetailView extends javax.swing.JPanel implements ListSelectionListener, ActionListener {
 
     private MainJFrame mySuperFrame;
+    private String currentselection;
+    private String currentLeagueName;
+    private String currentSaison;
+    private DefaultListModel teamsListModel;
     
     /**
      * Creates new form EnterLeagueDetailView
      */
-    public EnterLeagueDetailView(MainJFrame superFrame /* HIER VARIABLE ÜBERGEBEN DIE GEBRACHT WERDEN */) {
+    public EnterLeagueDetailView(MainJFrame superFrame, String leagueName) {
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
+        
+        leagueNameTextField.setText(leagueName);
+        currentLeagueName = leagueName;
+        
+        removeTeamButton.setEnabled(false);
+        
+        teamsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION );
+        teamsList.addListSelectionListener(this);
+        teamsListModel = new DefaultListModel();
+        
+        updateSaisonsList();
+        saisonComboBox.addActionListener(this);
+        
+        updateTeamsList();
     }
 
     /**
@@ -33,25 +58,25 @@ public class EnterLeagueDetailView extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        teamsList = new javax.swing.JList();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        leagueNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        saisonComboBox = new javax.swing.JComboBox();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        addTeamButton = new javax.swing.JButton();
+        removeTeamButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        addSaisonButton = new javax.swing.JButton();
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        teamsList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(teamsList);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -59,20 +84,45 @@ public class EnterLeagueDetailView extends javax.swing.JPanel {
 
         jLabel2.setText("Name");
 
-        jTextField1.setText("jTextField1");
+        leagueNameTextField.setText("jTextField1");
+        leagueNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leagueNameTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Saison");
 
-        jToggleButton1.setText("Add Saison");
+        saisonComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        addTeamButton.setText("Add Team");
+        addTeamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTeamButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Add Team");
+        removeTeamButton.setText("Remove Team");
+        removeTeamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeTeamButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Remove Team");
+        backButton.setText("Back");
+        backButton.setToolTipText("");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Back");
-        jButton3.setToolTipText("");
+        addSaisonButton.setText("add Saison");
+        addSaisonButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSaisonButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,24 +137,23 @@ public class EnterLeagueDetailView extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jToggleButton1)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(addTeamButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(removeTeamButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(leagueNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saisonComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addSaisonButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -113,41 +162,104 @@ public class EnterLeagueDetailView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leagueNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(saisonComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addSaisonButton))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(removeTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateTeamsList(){
+        teamsListModel.removeAllElements();
+        String[] teams = mySuperFrame.getController().getAllTeamsFromLeagueAndSaison(currentLeagueName, currentSaison);
+        for(int i = 0; i < teams.length; i++){
+            teamsListModel.addElement(teams[i]);
+        }
+        teamsList.setModel(teamsListModel);
+    }
+    
+    private void updateSaisonsList(){
+        saisonComboBox.removeAllItems();
+        String[] saisons = mySuperFrame.getController().getAllSaisonsFromLeague(currentLeagueName);
+        for(int i = 0; i < saisons.length; i++){
+            saisonComboBox.addItem(saisons[i]);
+        }
+    }
+    
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        removeTeamButton.setEnabled(true);
+        currentselection = teamsList.getSelectedValue().toString();
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        currentSaison = saisonComboBox.getSelectedItem().toString();
+        updateTeamsList();
+    }
+
+    
+    private void addTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeamButtonActionPerformed
+        // TODO add your handling code here: 
+        // TODO: View anzeigen, dass Teams auswählen lässt
+    }//GEN-LAST:event_addTeamButtonActionPerformed
+
+    private void removeTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeTeamButtonActionPerformed
+        if(mySuperFrame.getController().removeTeamFromLeague(currentselection,currentLeagueName)){
+            updateTeamsList();
+        }
+    }//GEN-LAST:event_removeTeamButtonActionPerformed
+
+    private void addSaisonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSaisonButtonActionPerformed
+        String input = JOptionPane.showInputDialog("Name for new Saison");
+        while(input.equalsIgnoreCase("")){
+            input = JOptionPane.showInputDialog("Name for new Saison (no empty string)");
+        }
+        mySuperFrame.getController().addSaisonForLeague(input,currentLeagueName);
+        updateSaisonsList();
+    }//GEN-LAST:event_addSaisonButtonActionPerformed
+
+    private void leagueNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueNameTextFieldActionPerformed
+        if(mySuperFrame.getController().changeLeagueName(currentLeagueName, leagueNameTextField.getText())){
+            currentLeagueName = leagueNameTextField.getText();
+        }else{
+            leagueNameTextField.setText(currentLeagueName);
+        }
+    }//GEN-LAST:event_leagueNameTextFieldActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        mySuperFrame.presentEnterLeagueView();
+    }//GEN-LAST:event_backButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton addSaisonButton;
+    private javax.swing.JButton addTeamButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField leagueNameTextField;
+    private javax.swing.JButton removeTeamButton;
+    private javax.swing.JComboBox saisonComboBox;
+    private javax.swing.JList teamsList;
     // End of variables declaration//GEN-END:variables
 }

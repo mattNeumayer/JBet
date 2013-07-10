@@ -26,9 +26,9 @@
                           <Component id="isAdminCheckBox" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="enterResults" min="-2" max="-2" attributes="0"/>
-                          <Component id="enterLeague" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="enterResultsButton" max="32767" attributes="0"/>
+                          <Component id="enterLeagueButton" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -55,9 +55,9 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="enterLeague" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="enterLeagueButton" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="enterResults" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="enterResultsButton" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="116" max="-2" attributes="0"/>
@@ -102,21 +102,21 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="enterLeague">
+    <Component class="javax.swing.JButton" name="enterLeagueButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="League eintragen"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterLeagueActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterLeagueButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="enterResults">
+    <Component class="javax.swing.JButton" name="enterResultsButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ergebnisse eintragen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterResultsActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterResultsButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="isAdminCheckBox">

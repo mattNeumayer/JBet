@@ -14,8 +14,15 @@ public class Controller {
     private User loggedInUser;
 
     public Controller() {
-        model = DbControl.getInstance();
+        System.out.println("Methode isAdmin in Controller ist wegen Test ausgaklammert");
+        // -------
+        
         frame = new MainJFrame(this);
+        
+        // -------
+        
+        /*model = DbControl.getInstance();
+        frame = new MainJFrame(this);*/
     }
 
     /**
@@ -24,7 +31,14 @@ public class Controller {
      * @return
      */
     public boolean isAdmin(String name) {
-        return model.isAdmin(name);
+        System.out.println("Methode isAdmin in Controller ist wegen Test ausgaklammert");
+        // -------
+        
+        return true;
+        
+        // -------
+        
+        //return model.isAdmin(name);
     }
 
     /**
@@ -46,10 +60,17 @@ public class Controller {
      * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
      */
     public boolean requestUserLoginValid(String name, String passwort) {
-        if (model.checkLogin(name, passwort)){
+        System.out.println("Methode requestUserLoginValid in Controller ist wegen Test ausgaklammert");
+        // -------
+        
+        return true;
+        
+        // -------
+        
+        /*if (model.checkLogin(name, passwort)){
             loggedInUser = new User(name,passwort,model.isAdmin(name));    
         }
-        return model.checkLogin(name, passwort);
+        return model.checkLogin(name, passwort);*/
     }
     
     public String getCurrentUsername(){
@@ -57,7 +78,14 @@ public class Controller {
     }
     
     public boolean isCurrentUserAdmin(){
-        return loggedInUser.isAdmin();
+        System.out.println("Methode isCurrentUserAdmin in Controller ist wegen Test ausgaklammert");
+        // -------
+        
+        return true;
+        
+        // -------
+        
+        //return loggedInUser.isAdmin();
     }
     
 
@@ -71,9 +99,9 @@ public class Controller {
     //     frame.ergebnisseEintragen(mannschaft1,mannschaft2,ergebnis1,ergebnis2);
     // }
     
-    public ArrayList<String> getAllUser(){
+    /*public ArrayList<String> getAllUser(){
         return model.listAllUsername();
-    }
+    }*/
     
     // public void addLeague(String name)
     // {
@@ -102,5 +130,87 @@ public class Controller {
 
     public boolean setAdmin(String name, boolean admin) {
         return true;
+    }
+    
+    public String[] getAllUser(){
+        System.out.println("Methode getAllUser in Controller ist wegen Test ausgaklammert");
+        // -------
+        
+        String[] temp = {"Hans", "Franz", "Karl", };
+        return temp;
+        
+        // -------
+        
+        // TODO: implement Methode
+    }
+    
+    public String[] getAllLeagues(){
+        System.out.println("Methode getAllLeagues in Controller ist wegen Test ausgaklammert");
+        // -------
+        
+        String[] temp = {"1. Bundesliga", "2. Bundesliga", "Bezirksliga", };
+        return temp;
+        
+        // -------
+        
+        // TODO: implement Methode
+    }
+    
+    
+    public boolean changeLeagueName(String currentLeagueName, String futureLeagueName){
+        System.out.println("Methode changeLeagueName in Controller ist wegen Test ausgaklammert");
+        // -------
+
+        return true;
+        
+        // -------
+        
+        // TODO: implement Methode
+    }
+    
+    public String[] getAllTeamsFromLeagueAndSaison(String league, String saison){
+        System.out.println("Methode getAllTeamsFromLeagueAndSaison in Controller ist wegen Test ausgaklammert");
+        // -------
+
+        String[] temp = {"FC Bayer", "Dortmund", "Bochum", "hamburg", };
+        return temp;
+        
+        // -------
+        
+        // TODO: implement Methode
+    }
+    
+    public String[] getAllSaisonsFromLeague(String league){
+        System.out.println("Methode getAllSaisonsFromLeague in Controller ist wegen Test ausgaklammert");
+        // -------
+
+        String[] temp = {"2011", "2012", "2013", "2014", };
+        return temp;
+        
+        // -------
+        
+        // TODO: implement Methode
+    }
+    
+    public boolean removeTeamFromLeague(String team, String league){
+        System.out.println("Methode removeTeamFromLeague in Controller ist wegen Test ausgaklammert");
+        // -------
+
+        return true;
+        
+        // -------
+        
+        // TODO: implement Methode
+    }
+    
+    public boolean addSaisonForLeague(String newSaison, String League){
+        System.out.println("Methode addSaisonForLeague in Controller ist wegen Test ausgaklammert");
+        // -------
+
+        return true;
+        
+        // -------
+        
+        // TODO: implement Methode
     }
 }

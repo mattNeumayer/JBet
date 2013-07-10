@@ -44,6 +44,7 @@ public class UserStartView extends javax.swing.JPanel {
         jLabel1.setText("Welcome \"Username\"");
 
         showLeaderboardButton.setText("Show Leaderboard");
+        showLeaderboardButton.setEnabled(false);
         showLeaderboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showLeaderboardButtonActionPerformed(evt);
@@ -114,7 +115,7 @@ public class UserStartView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterBetsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBetsButtonActionPerformed
-        mySuperFrame.presentEnterMatchResultsView(false);
+        mySuperFrame.presentEnterMatchResultsView();
     }//GEN-LAST:event_enterBetsButtonActionPerformed
 
     private void showLeaderboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLeaderboardButtonActionPerformed

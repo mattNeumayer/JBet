@@ -4,6 +4,7 @@
  */
 package jbet.Views;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -18,6 +19,7 @@ public class EnterLeagueView extends javax.swing.JPanel implements ListSelection
     
     private MainJFrame mySuperFrame;
     private String currentSelectedLiga;
+    private DefaultListModel leagueListModel;
     
     /**
      * Creates new form EnterLeagueDetailsAdminView
@@ -26,14 +28,25 @@ public class EnterLeagueView extends javax.swing.JPanel implements ListSelection
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
+        
+        editLeagueButton.setEnabled(false);
+        
         LeagueList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION );
         LeagueList.addListSelectionListener(this);
+        
+        leagueListModel = new DefaultListModel();
+        String[] user = mySuperFrame.getController().getAllLeagues();
+        for(int i = 0; i < user.length; i++){
+            leagueListModel.addElement(user[i]);
+        }
+        LeagueList.setModel(leagueListModel);
     }
 
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
         currentSelectedLiga = LeagueList.getSelectedValue().toString();
+        editLeagueButton.setEnabled(true);
     }
     
     
@@ -126,15 +139,15 @@ public class EnterLeagueView extends javax.swing.JPanel implements ListSelection
     }// </editor-fold>//GEN-END:initComponents
 
     private void addLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLeagueButtonActionPerformed
-        mySuperFrame.presentEnterLeagueView();
+        mySuperFrame.presentEnterLeagueDetailView("Neue Liga");
     }//GEN-LAST:event_addLeagueButtonActionPerformed
 
     private void editLeagueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLeagueButtonActionPerformed
-        mySuperFrame.presentEnterLeagueView();
+        mySuperFrame.presentEnterLeagueDetailView(currentSelectedLiga);
     }//GEN-LAST:event_editLeagueButtonActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        mySuperFrame.presentJBetView(true);
+        mySuperFrame.presentJBetView();
     }//GEN-LAST:event_backActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
