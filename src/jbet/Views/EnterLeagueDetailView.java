@@ -4,8 +4,8 @@
  */
 package jbet.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -17,7 +17,7 @@ import jbet.MainJFrame;
  *
  * @author schmiedmayerp29
  */
-public class EnterLeagueDetailView extends javax.swing.JPanel implements ListSelectionListener, ActionListener {
+public class EnterLeagueDetailView extends javax.swing.JPanel implements ListSelectionListener, ItemListener {
 
     private MainJFrame mySuperFrame;
     private String currentselection;
@@ -43,7 +43,7 @@ public class EnterLeagueDetailView extends javax.swing.JPanel implements ListSel
         teamsListModel = new DefaultListModel();
         
         updateSaisonsList();
-        saisonComboBox.addActionListener(this);
+        saisonComboBox.addItemListener(this);
         
         updateTeamsList();
     }
@@ -209,9 +209,13 @@ public class EnterLeagueDetailView extends javax.swing.JPanel implements ListSel
     }
     
     @Override
-    public void actionPerformed(ActionEvent e) {
-        currentSaison = saisonComboBox.getSelectedItem().toString();
-        updateTeamsList();
+    public void itemStateChanged(ItemEvent e) {
+        //if(e.getSource() == saisonComboBox){
+             if(e.getStateChange() == ItemEvent.SELECTED){
+                currentSaison = saisonComboBox.getSelectedItem().toString();
+                updateTeamsList();
+            }
+       //}
     }
     
     
