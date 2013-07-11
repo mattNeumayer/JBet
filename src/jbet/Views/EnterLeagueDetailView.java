@@ -213,7 +213,7 @@ public class EnterLeagueDetailView extends javax.swing.JPanel implements ListSel
         currentSaison = saisonComboBox.getSelectedItem().toString();
         updateTeamsList();
     }
-
+    
     
     private void addTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeamButtonActionPerformed
         // TODO add your handling code here: 

@@ -4,26 +4,39 @@
  */
 package jbet.Views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.event.ListSelectionListener;
 import jbet.MainJFrame;
 
 /**
  *
  * @author schmiedmayerp29
  */
-public class EnterMatchResultsView extends javax.swing.JPanel {
+public class EnterMatchResultsView extends javax.swing.JPanel{
 
     private MainJFrame mySuperFrame;
+    private boolean initDone;
     
     /**
      * Creates new form EnterMatchResultsView
      */
     public EnterMatchResultsView(MainJFrame superFrame) {
+        initDone = false;
         initComponents();
         mySuperFrame = superFrame;
         mySuperFrame.setSize(getPreferredSize());
         
-        leagueComboBox.setEnabled(false);
+        saisonComboBox.setEnabled(false);
         matchdaySpinner.setEnabled(false);
+        
+        leagueComboBox.removeAllItems();
+        String[] lagues = mySuperFrame.getController().getAllLeagues();
+        for(int i = 0; i < lagues.length; i++){
+            leagueComboBox.addItem(lagues[i]);
+        }
+        
+        initDone = true;
     }
 
     /** 
@@ -39,7 +52,7 @@ public class EnterMatchResultsView extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         leagueComboBox = new javax.swing.JComboBox();
-        yearComboBox = new javax.swing.JComboBox();
+        saisonComboBox = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         matchdaySpinner = new javax.swing.JSpinner();
@@ -60,14 +73,14 @@ public class EnterMatchResultsView extends javax.swing.JPanel {
             }
         });
 
-        yearComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        yearComboBox.addActionListener(new java.awt.event.ActionListener() {
+        saisonComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        saisonComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearComboBoxActionPerformed(evt);
+                saisonComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Jahr");
+        jLabel3.setText("Saison");
 
         jLabel4.setText("Spieltag");
 
@@ -106,12 +119,12 @@ public class EnterMatchResultsView extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(saisonComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(matchdaySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 27, Short.MAX_VALUE))
+                        .addGap(0, 17, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,7 +145,7 @@ public class EnterMatchResultsView extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(leagueComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saisonComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(matchdaySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -143,18 +156,28 @@ public class EnterMatchResultsView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void reloadContent(){
         
     }
     
-    private void yearComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearComboBoxActionPerformed
-        reloadContent();
-        leagueComboBox.setEnabled(true);
-        matchdaySpinner.setEnabled(false);
-    }//GEN-LAST:event_yearComboBoxActionPerformed
+    private void saisonComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saisonComboBoxActionPerformed
+        matchdaySpinner.setEnabled(true);
+    }//GEN-LAST:event_saisonComboBoxActionPerformed
 
     private void leagueComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueComboBoxActionPerformed
-         matchdaySpinner.setEnabled(false);
+        if (!initDone) return;
+        
+        reloadContent();
+        saisonComboBox.setEnabled(true);
+        matchdaySpinner.setEnabled(false);
+        
+        saisonComboBox.removeAllItems();
+        String[] saisons = mySuperFrame.getController().getAllSaisonsFromLeague(leagueComboBox.getSelectedItem().toString());
+        for(int i = 0; i < saisons.length; i++){
+            saisonComboBox.addItem(saisons[i]);
+        }
+        //saisonComboBox.addActionListener(this);
     }//GEN-LAST:event_leagueComboBoxActionPerformed
 
     private void matchdaySpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_matchdaySpinnerStateChanged
@@ -176,6 +199,7 @@ public class EnterMatchResultsView extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JComboBox leagueComboBox;
     private javax.swing.JSpinner matchdaySpinner;
-    private javax.swing.JComboBox yearComboBox;
+    private javax.swing.JComboBox saisonComboBox;
     // End of variables declaration//GEN-END:variables
+
 }
