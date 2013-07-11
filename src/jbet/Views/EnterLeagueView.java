@@ -4,6 +4,8 @@
  */
 package jbet.Views;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -35,9 +37,10 @@ public class EnterLeagueView extends javax.swing.JPanel implements ListSelection
         LeagueList.addListSelectionListener(this);
         
         leagueListModel = new DefaultListModel();
-        String[] user = mySuperFrame.getController().getAllLeagues();
-        for(int i = 0; i < user.length; i++){
-            leagueListModel.addElement(user[i]);
+        ArrayList<String> user = mySuperFrame.getController().getAllLeagues();
+        Iterator<String> itter = user.iterator();
+        while(itter.hasNext()){
+            leagueListModel.addElement(itter.next());
         }
         LeagueList.setModel(leagueListModel);
     }

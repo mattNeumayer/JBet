@@ -14,15 +14,8 @@ public class Controller {
     private User loggedInUser;
 
     public Controller() {
-        System.out.println("Methode isAdmin in Controller ist wegen Test ausgaklammert");
-        // -------
-        
+        model = DbControl.getInstance();
         frame = new MainJFrame(this);
-        
-        // -------
-        
-        /*model = DbControl.getInstance();
-        frame = new MainJFrame(this);*/
     }
 
     /**
@@ -31,14 +24,7 @@ public class Controller {
      * @return
      */
     public boolean isAdmin(String name) {
-        System.out.println("Methode isAdmin in Controller ist wegen Test ausgaklammert");
-        // -------
-        
-        return true;
-        
-        // -------
-        
-        //return model.isAdmin(name);
+        return model.isAdmin(name);
     }
 
     /**
@@ -49,7 +35,9 @@ public class Controller {
      * @return
      */
     public boolean addUser(String name, String passwort, boolean admin) {
-        model.add(new User(name, passwort, admin));
+        User newUser = new User(name, passwort, admin);
+        model.add(newUser);
+        loggedInUser = newUser;
         return true;
     }
 
@@ -60,17 +48,10 @@ public class Controller {
      * @return true wenn es die Kombination gibt/ false wenn es sie nicht gibt
      */
     public boolean requestUserLoginValid(String name, String passwort) {
-        System.out.println("Methode requestUserLoginValid in Controller ist wegen Test ausgaklammert");
-        // -------
-        
-        return true;
-        
-        // -------
-        
-        /*if (model.checkLogin(name, passwort)){
+        if (model.checkLogin(name, passwort)){
             loggedInUser = new User(name,passwort,model.isAdmin(name));    
         }
-        return model.checkLogin(name, passwort);*/
+        return model.checkLogin(name, passwort);
     }
     
     public String getCurrentUsername(){
@@ -78,14 +59,7 @@ public class Controller {
     }
     
     public boolean isCurrentUserAdmin(){
-        System.out.println("Methode isCurrentUserAdmin in Controller ist wegen Test ausgaklammert");
-        // -------
-        
-        return true;
-        
-        // -------
-        
-        //return loggedInUser.isAdmin();
+        return loggedInUser.isAdmin();
     }
     
 
@@ -132,28 +106,12 @@ public class Controller {
         return true;
     }
     
-    public String[] getAllUser(){
-        System.out.println("Methode getAllUser in Controller ist wegen Test ausgaklammert");
-        // -------
-        
-        String[] temp = {"Hans", "Franz", "Karl", };
-        return temp;
-        
-        // -------
-        
-        // TODO: implement Methode
+    public ArrayList<String> getAllUser(){
+        return model.listAllUsername();
     }
     
-    public String[] getAllLeagues(){
-        System.out.println("Methode getAllLeagues in Controller ist wegen Test ausgaklammert");
-        // -------
-        
-        String[] temp = {"1. Bundesliga", "2. Bundesliga", "Bezirksliga", };
-        return temp;
-        
-        // -------
-        
-        // TODO: implement Methode
+    public ArrayList<String> getAllLeagues(){
+        return model.listAllLeague();
     }
     
     

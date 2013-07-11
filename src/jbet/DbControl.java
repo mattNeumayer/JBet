@@ -10,6 +10,10 @@ import java.util.logging.Logger;
 
 import jbet.components.*;
 
+
+    
+    //internal database ID getter
+    
 /**
  * 05.06.2013
  *
@@ -18,13 +22,13 @@ public class DbControl {
 
     private final static DbControl instance = new DbControl();
     //@Home:
-    private final static String mySqlDriverManagerArg = "jdbc:mysql://localhost/Q11_gruppe4";
-    private final static String mySqlUsername = "root";
-    private final static String mySqlPassword = "";
+    //private final static String mySqlDriverManagerArg = "jdbc:mysql://localhost/Q11_gruppe4";
+    //private final static String mySqlUsername = "root";
+    //private final static String mySqlPassword = "";
     //@School:
-    //private final static String mySqlDriverManagerArg = "jdbc:mysql://172.16.11.1/Q11_gruppe4";
-    //private final static String mySqlUsername = "Q11_gruppe4";
-    //private final static String mySqlPassword = "1234";
+    private final static String mySqlDriverManagerArg = "jdbc:mysql://172.16.11.1/Q11_gruppe4";
+    private final static String mySqlUsername = "Q11_gruppe4";
+    private final static String mySqlPassword = "1234";
     private Connection con;
     private Statement st;
 
@@ -135,10 +139,10 @@ public class DbControl {
         String msg;
         if (user.isAdmin()) {
             msg = String.format("INSERT INTO user Value('%s','%s',1)",
-                    user.getUsername(), user.getPassword());
+                    user.getPassword(), user.getUsername());
         } else {
             msg = String.format("INSERT INTO user Value('%s','%s',0)",
-                    user.getUsername(), user.getPassword());
+                    user.getPassword(), user.getUsername()); 
         }
         return executeUpdate(msg);
     }
@@ -229,7 +233,7 @@ public class DbControl {
      * command failed)
      */
     public boolean checkLogin(String username, String passwort) {
-        String msg = String.format("SELECT name FROM user WHERE name = '%s' AND password = '%s'",
+        String msg = String.format("SELECT name FROM user WHERE name = '%s' AND passwort = '%s'",
                 username, passwort);
         ResultSet rs = executeQuery(msg);
         try {
@@ -257,10 +261,14 @@ public class DbControl {
             return false;
         }
     }
+    
+    public boolean setAdmin(String username) {
+        String msg = String.format("UPDATE user SET isAdmin = 1 WHERE name = '%s'",
+                username);
+            executeUpdate(msg);
+            return true;
+        }
 
-    
-    //internal database ID getter
-    
     private int getSeasonID(Season s) {
         String msg = String.format("SELECT S_ID FROM season WHERE startyear = %d AND league = '%s'",
                 s.getStartYear(), s.getLeague());

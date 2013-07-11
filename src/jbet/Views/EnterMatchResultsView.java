@@ -6,6 +6,8 @@ package jbet.Views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.event.ListSelectionListener;
 import jbet.MainJFrame;
 
@@ -31,9 +33,10 @@ public class EnterMatchResultsView extends javax.swing.JPanel{
         matchdaySpinner.setEnabled(false);
         
         leagueComboBox.removeAllItems();
-        String[] lagues = mySuperFrame.getController().getAllLeagues();
-        for(int i = 0; i < lagues.length; i++){
-            leagueComboBox.addItem(lagues[i]);
+        ArrayList<String> leagues = mySuperFrame.getController().getAllLeagues();
+        Iterator<String> itter = leagues.iterator();
+        while(itter.hasNext()){
+            leagueComboBox.addItem(itter.next());
         }
         
         initDone = true;

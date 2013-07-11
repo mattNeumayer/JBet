@@ -4,6 +4,8 @@
  */
 package jbet.Views;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -33,9 +35,10 @@ public class AdminStartView extends javax.swing.JPanel implements ListSelectionL
         userList.addListSelectionListener(this);
         
         userListModel = new DefaultListModel();
-        String[] user = mySuperFrame.getController().getAllUser();
-        for(int i = 0; i < user.length; i++){
-            userListModel.addElement(user[i]);
+        ArrayList<String> user = mySuperFrame.getController().getAllUser();
+        Iterator<String> itter = user.iterator(); 
+        while(itter.hasNext()){
+            userListModel.addElement(itter.next());
         }
         userList.setModel(userListModel);
     }
